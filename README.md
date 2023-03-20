@@ -99,14 +99,14 @@ In the year 2015, we see that the three leading brands in the market were Ford, 
 ![](./src/main/resources/images/1-2015.png)
 
 ### How is the evolution of the three brands with the most cars registered between 2015 and 2021?
-The three brands that led the car market between 2015 and 2021 were Ford, Chevrolet and Toyota. The evolution graph can be seen below:
+The three brands that led the car market between 2015 and 2021 were Ford, Chevrolet and Toyota. The query can be seen in the Top3MarketBrandRankings2015to2021.scala file. The evolution graph can be seen below:
 
 ![](./src/main/resources/images/evolution1.png)
 
 ![](./src/main/resources/images/2-evolution.png)
 
 ### How is the evolution of the three brands that dominate the market in 2021?
-The three brands that dominated the car market in 2021 were Hyundai, Kia and Toyota. The evolution graph (between 2015 and 2021) of the three brands that dominated the market in 2021 can be viewed below:
+The three brands that dominated the car market in 2021 were Hyundai, Kia and Toyota. The query can be seen in the EvolutionOfTheThreeBrandsThatDominateTheMarketIn2021.scala file. The evolution graph (between 2015 and 2021) of the three brands that dominated the market in 2021 can be viewed below:
 
 ![](./src/main/resources/images/evolution2.png)
 
