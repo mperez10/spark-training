@@ -127,9 +127,19 @@ The three brands that led the car market between 2015 and 2021 were Ford, Chevro
 
 ![](./src/main/resources/images/2-evolution.png)
 
+### Conclusions
+
+Of the three brands that dominated the market between 2015 and 2021, Ford, Chevrolet and Toyota, only the latter appears in the 2021 ranking, and it appears in third place. In the 2021 ranking, Chevrolet appears in rank 4, and Ford drops to rank 15.
+
 ### How is the evolution of the three brands that dominate the market in 2021?
 The three brands that dominated the car market in 2021 were Hyundai, Kia and Toyota. The query can be seen in the EvolutionOfTheThreeBrandsThatDominateTheMarketIn2021.scala file. The evolution graph (between 2015 and 2021) of the three brands that dominated the market in 2021 can be viewed below:
 
 ![](./src/main/resources/images/evolution2.png)
 
 ![](./src/main/resources/images/2-evolution2.png)
+
+### Conclusions
+
+Of the three brands dominating the 2021 market, only Toyota appeared in the previous rankings (with the exception of 2020 which appeared in rank 4, then appeared in the top three rankings 2015, 2016, 2017, 2018, 2019 and 2021).
+Hyundai appearing first in the 2021 ranking, in the 2020 ranking it was ranked 6th.
+Kia which appears second in the 2021 ranking, in the 2020 ranking it was ranked 8th.
