@@ -98,6 +98,28 @@ In the year 2015, we see that the three leading brands in the market were Ford, 
 
 ![](./src/main/resources/images/1-2015.png)
 
+### Conclusions
+
+Number of times in the top three ranking between 2015 and 2021:
+
+-Toyota: 6
+
+-Ford: 6
+
+-Chevrolet: 4
+
+-Nissan: 2
+
+-Hyundai: 1
+
+-Kia: 1
+
+-Honda: 1
+
+Toyota and Ford are the car brands that have been part of the ranking the most times.
+
+Hyundai and Kia, despite only being part of the ranking once between 2015 and 2021, in 2021 are the leaders in number of cars registered.
+
 ### How is the evolution of the three brands with the most cars registered between 2015 and 2021?
 The three brands that led the car market between 2015 and 2021 were Ford, Chevrolet and Toyota. The query can be seen in the Top3MarketBrandRankings2015to2021.scala file. The evolution graph can be seen below:
 
