@@ -41,7 +41,7 @@ Below are graphs based on the information obtained from the query:
 ### 2021
 In the year 2021, we see that the three leading brands in the market were Hyunday, Kia y Toyota.
 
-![](/home/marcelo/Escritorio/spark-training/spark-training/src/main/resources/images/data2021.png)
+![data2021](/home/marcelo/Escritorio/spark-training/spark-training/src/main/resources/images/data2021.png)
 
 ![](/home/marcelo/Escritorio/spark-training/spark-training/src/main/resources/images/1-2021.png)
 
