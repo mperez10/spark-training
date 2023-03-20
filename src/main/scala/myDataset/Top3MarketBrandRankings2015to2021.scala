@@ -25,10 +25,10 @@ object Top3MarketBrandRankings2015to2021 extends App{
     .groupBy("make_name")
     .agg(count("*").alias("total_car_per_make_name"))
 
-  // Ordenar por total de ventas descendente
+  // Sort by descending sales total
   val df_sorted = countOfCarsPerMakeName.orderBy(desc("total_car_per_make_name"))
 
-  // Obtener las primeras 3 marcas por total de ventas
+  // To obtain the first 3 brands by total sales
   val df_top3 = df_sorted.limit(3)
 
   df_top3.show(600)
@@ -57,10 +57,9 @@ object Top3MarketBrandRankings2015to2021 extends App{
   val dfCarWithPercentageByYear = dfCarsByYearAndMakeNameWithTotalByCarYear
     .withColumn("porcentaje", col("cantidad_autos") / col("total_per_year") * 100)
 
-  // Ordenar por año y cantidad de autos en orden descendente
+  // Sort by year and number of cars in descending order
   val dfCarWithPercentageByYearDesc = dfCarWithPercentageByYear.orderBy(desc("year"), desc("cantidad_autos"))
 
-  //Si tuviera
   val dfCarMakeNameWithRankingByYear = dfCarWithPercentageByYearDesc
     .withColumn("rank", rank().over(Window.partitionBy("year")
       .orderBy(desc("cantidad_autos"))))
@@ -69,7 +68,7 @@ object Top3MarketBrandRankings2015to2021 extends App{
   dfCarMakeNameWithRankingByYear.show(600)
 
   /*
-  // Escribir un csv en forma de columnas en un sólo archivo
+  // Write a csv in columnar form to a single file
   //val rows = withRank.collect().map(_.toSeq.map(_.toString))
   val rows = dfCarMakeNameWithRankingByYear.collect().map(_.toSeq.map {
     case d: Double => d.toString.replace(".", ",")

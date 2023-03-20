@@ -35,7 +35,7 @@ object CarApplication extends App{
   val dfCarWithPercentageByYear = dfCarsByYearAndMakeNameWithTotalByCarYear
   .withColumn("porcentaje", col("cantidad_autos") / col("total_per_year") * 100)
 
-  // Ordenar por año y cantidad de autos en orden descendente
+  // Sort by year and number of cars in descending order
   val dfCarWithPercentageByYearDesc = dfCarWithPercentageByYear.orderBy(desc("year"), desc("cantidad_autos"))
 
   val dfCarMakeNameWithRankingByYear = dfCarWithPercentageByYearDesc
@@ -46,7 +46,7 @@ object CarApplication extends App{
   dfCarMakeNameWithRankingByYear.show(600)
 
   /*
-  // Escribir un csv en forma de columnas en un sólo archivo
+  // Write a csv in columnar form to a single file
   //val rows = withRank.collect().map(_.toSeq.map(_.toString))
   val rows = withRank.collect().map(_.toSeq.map {
     case d: Double => d.toString.replace(".", ",")
