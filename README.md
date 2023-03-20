@@ -38,6 +38,10 @@ The first thing that was done was a study of all the information that made up th
 
 -Data with years in null: 1,179,751 / 3,000,507 = 39%.
 
+-Rows with a year less than 2015: 334944 / 3000507 = 11%
+
+-Rows with a year older than 2021: 7042 / 3000507 = 0.2%
+
 
 ### What is the ranking by year of car brands?
 
