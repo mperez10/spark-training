@@ -32,6 +32,8 @@ In this file you will be able to find the code needed to see the evolution of th
 ### How to work with the dataset?
 The first thing that was done was a study of all the information that made up the dataset. It was decided to discard the rows that did not have a year, and to keep only the rows that were between 2015 and 2021.
 
+### Statistics from full dataset.
+
 -Total rows: 3,000,507
 
 -Filtered between years 2015 and 2021: 1,478,770 / 3,000,507 = 49%.
@@ -41,6 +43,22 @@ The first thing that was done was a study of all the information that made up th
 -Rows with a year less than 2015: 334944 / 3000507 = 11%
 
 -Rows with a year older than 2021: 7042 / 3000507 = 0.2%
+
+### Statistics from useful data.
+
+-Percentage of cars of the year 2021: 112434 / 1478770 = 0.076
+
+-Percentage of cars of the year 2020: 731937 / 1478770 = 0.494
+
+-Percentage of cars of the year 2019: 164789 / 1478770 = 0.111
+
+-Percentage of cars of the year 2018: 122093 / 1478770 = 0.082
+
+-Percentage of cars of the year 2017: 202920 / 1478770 = 0.137
+
+-Percentage of cars of the year 2016: 80299 / 1478770 = 0.054
+
+-Percentage of cars of the year 2015: 64298 / 1478770 = 0.043
 
 
 ### What is the ranking by year of car brands?
