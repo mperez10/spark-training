@@ -143,3 +143,6 @@ The three brands that dominated the car market in 2021 were Hyundai, Kia and Toy
 Of the three brands dominating the 2021 market, only Toyota appeared in the previous rankings (with the exception of 2020 which appeared in rank 4, then appeared in the top three rankings 2015, 2016, 2017, 2018, 2019 and 2021).
 Hyundai appearing first in the 2021 ranking, in the 2020 ranking it was ranked 6th.
 Kia which appears second in the 2021 ranking, in the 2020 ranking it was ranked 8th.
+
+### Final conclusion
+The dominance in the car market has been varying year after year, but there are some brands that are highly valued by the general public. Among these we find Toyota, Ford and Chevrolet. We should mention that Toyota has been almost always fighting in the ranking between the years 2015 to 2021. It is also worth mentioning that in the last year of the study, 2021, there are brands that promise future growth, such as Hyundai and Kia. However, we will only be able to verify this promise with the passage of time and new market studies.
