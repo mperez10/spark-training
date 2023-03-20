@@ -32,6 +32,13 @@ In this file you will be able to find the code needed to see the evolution of th
 ### How to work with the dataset?
 The first thing that was done was a study of all the information that made up the dataset. It was decided to discard the rows that did not have a year, and to keep only the rows that were between 2015 and 2021.
 
+-Total rows: 3,000,507
+
+-Filtered between years 2015 and 2021: 1,478,770 / 3,000,507 = 49%.
+
+-Data with years in null: 1,179,751 / 3,000,507 = 39%.
+
+
 ### What is the ranking by year of car brands?
 
 In order to be able to answer and give visibility of this question, what was done was to put together a query that has the total cars by year (regardless of brand), and then calculate the total cars by brand. Having these two pieces of information, we can now get the percentage of dominance of a brand in the market according to the model.
