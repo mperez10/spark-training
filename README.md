@@ -31,34 +31,49 @@ In this file you will be able to find the code needed to see the evolution of th
 
 ### How to work with the dataset?
 The first thing that was done was a study of all the information that made up the dataset. It was decided to discard the rows that did not have a year, and to keep only the rows that were between 2015 and 2021.
+As outliers in the year field we can identify several values to review.
+To begin with, the years to identify should be from 1886 (year of creation of the first car in the world) to 2021 (last year of the dataset sampling). But when analyzing the dataset, we see that there is a small percentage that does not meet the expected value.
 
-### Statistics from full dataset.
+-Percentage of values that are above the year 2021: 0.23% (7042 rows).
 
--Total rows: 3,000,507
+-Percentage of values below the year 1886: 0.01% (317 rows).
 
--Filtered between years 2015 and 2021: 1,478,770 / 3,000,507 = 49%.
+The code for the percentage calculation can be found in the OutliersAnalysis.scala file. The resulting dataframe according to the dataset we work with is the one we see below:
 
--Data with years in null: 1,179,751 / 3,000,507 = 39%.
+![](/home/marcelo/Escritorio/spark-training/spark-training/src/main/resources/images/datasetAnalysis.png)
 
--Rows with a year less than 2015: 334944 / 3000507 = 11%
+On the other hand, the number of vehicles per year between 1900 and 2014, is always less than 4%, so it was considered that in order to have a more accurate analysis of the current market, all useful data from 2015 to 2021 (which this range covers 49.28% of the total dataset) should be taken into account.
+For the analysis in question, it was decided to consider all the years with at least 4% of cars in the useful data records.
 
--Rows with a year older than 2021: 7042 / 3000507 = 0.2%
+### General summary of dataset information
+
+Full Dataset: It is the complete dataset.
+
+Usefull: It is the information leaked between 2015 and 2021.
+
+N/A: It is the information that contains nulls.
+
+Outlier: It is the information that is part of the outliers.
+
+![](/home/marcelo/Escritorio/spark-training/spark-training/src/main/resources/images/graldataset.png)
+
+The code of this summary can be seen in the file DatasetAnalysis.scala
 
 ### Statistics from useful data.
 
--Percentage of cars of the year 2021: 112434 / 1478770 = 0.076
+-Percentage of cars of the year 2021: 112434 / 1478770 * 100 = 7.6%
 
--Percentage of cars of the year 2020: 731937 / 1478770 = 0.494
+-Percentage of cars of the year 2020: 731937 / 1478770 * 100 = 4,94%
 
--Percentage of cars of the year 2019: 164789 / 1478770 = 0.111
+-Percentage of cars of the year 2019: 164789 / 1478770 * 100 = 11,1%
 
--Percentage of cars of the year 2018: 122093 / 1478770 = 0.082
+-Percentage of cars of the year 2018: 122093 / 1478770 * 100 = 8,2%
 
--Percentage of cars of the year 2017: 202920 / 1478770 = 0.137
+-Percentage of cars of the year 2017: 202920 / 1478770 * 100 = 13,7%
 
--Percentage of cars of the year 2016: 80299 / 1478770 = 0.054
+-Percentage of cars of the year 2016: 80299 / 1478770 * 100 = 5,4%
 
--Percentage of cars of the year 2015: 64298 / 1478770 = 0.043
+-Percentage of cars of the year 2015: 64298 / 1478770 * 100 = 4,3%
 
 
 ### What is the ranking by year of car brands?
