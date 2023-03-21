@@ -36,7 +36,7 @@ To begin with, the years to identify should be from 1886 (year of creation of th
 
 -Percentage of values that are above the year 2021: 0.23% (7042 rows).
 
--Percentage of values below the year 1886: 0.01% (317 rows).
+-Percentage of values below the year 1886: 0.12% (317 rows).
 
 The code for the percentage calculation can be found in the OutliersAnalysis.scala file. The resulting dataframe according to the dataset we work with is the one we see below:
 
