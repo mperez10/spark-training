@@ -40,7 +40,7 @@ To begin with, the years to identify should be from 1886 (year of creation of th
 
 The code for the percentage calculation can be found in the OutliersAnalysis.scala file. The resulting dataframe according to the dataset we work with is the one we see below:
 
-![](/home/marcelo/Escritorio/spark-training/spark-training/src/main/resources/images/datasetAnalysis.png)
+![](./src/main/resources/images/datasetAnalysis.png)
 
 On the other hand, the number of vehicles per year between 1900 and 2014, is always less than 4%, so it was considered that in order to have a more accurate analysis of the current market, all useful data from 2015 to 2021 (which this range covers 49.28% of the total dataset) should be taken into account.
 For the analysis in question, it was decided to consider all the years with at least 4% of cars in the useful data records.
@@ -55,7 +55,7 @@ N/A: It is the information that contains nulls.
 
 Outlier: It is the information that is part of the outliers.
 
-![](/home/marcelo/Escritorio/spark-training/spark-training/src/main/resources/images/graldataset.png)
+![](./src/main/resources/images/graldataset.png)
 
 The code of this summary can be seen in the file DatasetAnalysis.scala
 
