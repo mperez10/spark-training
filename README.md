@@ -61,19 +61,9 @@ The code of this summary can be seen in the file DatasetAnalysis.scala
 
 ### Statistics from useful data.
 
--Percentage of cars of the year 2021: 112434 / 1478770 * 100 = 7.6%
+![](./src/main/resources/images/percentageperyear.png)
 
--Percentage of cars of the year 2020: 731937 / 1478770 * 100 = 4,94%
-
--Percentage of cars of the year 2019: 164789 / 1478770 * 100 = 11,1%
-
--Percentage of cars of the year 2018: 122093 / 1478770 * 100 = 8,2%
-
--Percentage of cars of the year 2017: 202920 / 1478770 * 100 = 13,7%
-
--Percentage of cars of the year 2016: 80299 / 1478770 * 100 = 5,4%
-
--Percentage of cars of the year 2015: 64298 / 1478770 * 100 = 4,3%
+The code of this summary can be seen in the file CarAnalysisByYear.scala
 
 
 ### What is the ranking by year of car brands?
