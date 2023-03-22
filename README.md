@@ -125,19 +125,9 @@ In the year 2015, we see that the three leading brands in the market were Ford, 
 
 Number of times in the top three ranking between 2015 and 2021:
 
--Toyota: 6
+![](./src/main/resources/images/timesinranking.png)
 
--Ford: 6
-
--Chevrolet: 4
-
--Nissan: 2
-
--Hyundai: 1
-
--Kia: 1
-
--Honda: 1
+The code of this ranking can be seen in the file NumberTimesInRanking.scala
 
 Toyota and Ford are the car brands that have been part of the ranking the most times.
 
