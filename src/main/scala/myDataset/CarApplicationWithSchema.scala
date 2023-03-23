@@ -57,5 +57,22 @@ object CarApplicationWithSchema extends App {
     .withColumn("percentage", percentageFormat(col("null_count") / totalRows))
     .orderBy(col("null_count").desc)
 
-  nullStatsDF.show(70)
+
+    val sc = spark.sparkContext
+
+    // Write a csv in columnar form to a single file
+    //val rows = withRank.collect().map(_.toSeq.map(_.toString))
+    val rows = nullStatsDF.collect().map(_.toSeq.map {
+      case d: Double => d.toString.replace(".", ",")
+      case other => other.toString
+    })
+    val csvData = rows.map(_.mkString(";")).mkString("\n")
+
+    sc
+      .parallelize(Seq(csvData), 1)
+      .coalesce(1)
+      .saveAsTextFile("src/main/resources/data/percentageofnulls.csv")
+
+
+  //nullStatsDF.show(70)
 }

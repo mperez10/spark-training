@@ -158,6 +158,78 @@ The schema definition can be found in CarSchema.scala. Below is the code fragmen
     StructField("year", IntegerType)
   ))
 ```
+
+### Percentage of nulls by field
+
+| field                    | null_count | percentage |
+|-------------------------|---------:|-----------:|
+| combine_fuel_economy    | 3000421  |   100.00 % |
+| power                   | 2992240  |    99.72 % |
+| owner_count             | 2991104  |    99.69 % |
+| mileage                 | 2987189  |    99.56 % |
+| bed                     | 2980828  |    99.34 % |
+| maximum_seating         | 2979418  |    99.30 % |
+| trimId                  | 2976477  |    99.20 % |
+| is_certified            | 2965587  |    98.84 % |
+| torque                  | 2944612  |    98.14 % |
+| cabin                   | 2936885  |    97.88 % |
+| is_oemcpo               | 2879202  |    95.96 % |
+| is_cpo                  | 2870988  |    95.68 % |
+| bed_length              | 2571316  |    85.70 % |
+| bed_height              | 2571311  |    85.70 % |
+| fleet                   | 1978817  |    65.95 % |
+| frame_damaged           | 1966319  |    65.53 % |
+| salvage                 | 1966074  |    65.52 % |
+| theft_title             | 1955568  |    65.17 % |
+| isCab                   | 1951107  |    65.03 % |
+| has_accidents           | 1942185  |    64.73 % |
+| vehicle_damage_category | 1842063  |    61.39 % |
+| highway_fuel_economy    | 1484759  |    49.48 % |
+| sp_id                   | 1311141  |    43.70 % |
+| engine_displacement     | 1306280  |    43.54 % |
+| horsepower              | 1286761  |    42.88 % |
+| listing_id              | 1190237  |    39.67 % |
+| year                    | 1179751  |    39.32 % |
+| latitude                | 1170715  |    39.02 % |
+| franchise_dealer        | 1161329  |    38.70 % |
+| is_new                  | 1150959  |    38.36 % |
+| longitude               | 1139949  |    37.99 % |
+| seller_rating           | 1129735  |    37.65 % |
+| price                   | 1120425  |    37.34 % |
+| savings_amount          | 1116465  |    37.21 % |
+| franchise_make          | 510574   |    17.02 % |
+| city_fuel_economy       | 491746   |    16.39 % |
+| main_picture_url        | 244163   |     8.14 % |
+| major_options           | 208539   |     6.95 % |
+| length                  | 191105   |     6.37 % |
+| wheelbase               | 172343   |     5.74 % |
+| width                   | 170009   |     5.67 % |
+| back_legroom            | 159598   |     5.32 % |
+| wheel_system_display    | 151845   |     5.06 % |
+| wheel_system            | 147304   |     4.91 % |
+| front_legroom           | 139617   |     4.65 % |
+| fuel_tank_volume        | 135101   |     4.50 % |
+| height                  | 124685 |      4.16% |
+| trim_name               | 115705 |      3.86% |
+| transmission_display    | 88360 |      2.94% |
+| transmission            | 81957 |      2.73% |
+| fuel_type               | 79067 |      2.64% |
+| description             | 78281 |      2.61% |
+| listed_date             | 74762 |      2.49% |
+| engine_type             | 73521 |      2.45% |
+| engine_cylinders        | 71598 |      2.39% |
+| listing_color           | 61223 |      2.04% |
+| sp_name                 | 33104 |      1.10% |
+| make_name               | 28086 |      0.94% |
+| interior_color          | 26703 |      0.89% |
+| model_name              | 24773 |      0.83% |
+| body_type               | 13918 |      0.46% |
+| exterior_color          | 3949 |      0.13% |
+| dealer_zip              | 675 |      0.02% |
+| daysonmarket            | 465 |      0.02% |
+| city                    | 374 |      0.01% |
+| vin                     | 0 |      0.00% |
+
 ## How the Dataset is processed
 
 There is 3 Main files on the Project inside the myDataset Package.
