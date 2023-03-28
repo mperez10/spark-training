@@ -1,4 +1,4 @@
-package myDataset
+package myDataset.analysisaboutdataset
 
 import org.apache.spark.sql.SparkSession
 

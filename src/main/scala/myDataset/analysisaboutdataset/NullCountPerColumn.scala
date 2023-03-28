@@ -1,10 +1,9 @@
-package myDataset
+package myDataset.analysisaboutdataset
 
-import org.apache.spark.sql.{Column, SparkSession}
 import org.apache.spark.sql.functions._
-import org.apache.spark.sql.{functions => func}
+import org.apache.spark.sql.{Column, SparkSession, functions => func}
 
-object CarApplicationWithSchema extends App {
+object NullCountPerColumn extends App {
   val spark = SparkSession.builder()
     .config("spark.master", "local")
     .appName("Car Big Data Application")
@@ -13,7 +12,7 @@ object CarApplicationWithSchema extends App {
   val df = spark.read
     .schema(CarSchema.schema)
     .option("header", "true")
-    .csv("src/main/resources/data/used_cars_data.csv")
+    .csv("src/main/resources/data/newCleanDataset.csv")
 
   val totalRows = df.count()
 
@@ -51,13 +50,14 @@ object CarApplicationWithSchema extends App {
                 func.col(col).alias("null_count")
               )
           ): _*)
-      ).alias("v")
+      ).alias("df")
     )
-    .selectExpr("v.*")
+    .selectExpr("df.*")
     .withColumn("percentage", percentageFormat(col("null_count") / totalRows))
     .orderBy(col("null_count").desc)
 
 
+  /*
     val sc = spark.sparkContext
 
     // Write a csv in columnar form to a single file
@@ -72,7 +72,7 @@ object CarApplicationWithSchema extends App {
       .parallelize(Seq(csvData), 1)
       .coalesce(1)
       .saveAsTextFile("src/main/resources/data/percentageofnulls.csv")
+   */
 
-
-  //nullStatsDF.show(70)
+  nullStatsDF.show(70)
 }

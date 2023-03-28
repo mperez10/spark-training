@@ -1,6 +1,6 @@
 package myDataset.playground
 
-import myDataset.CarSchema
+import myDataset.analysisaboutdataset.CarSchema
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
 

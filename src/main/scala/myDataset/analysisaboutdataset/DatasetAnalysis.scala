@@ -1,18 +1,18 @@
-package myDataset
+package myDataset.analysisaboutdataset
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
 
 object DatasetAnalysis extends App{
   val spark = SparkSession.builder()
-    .config("spark.master", "local")
+    .config("spark.master", "local[*]")
     .appName("Car Big Data Application")
     .getOrCreate()
 
   val df = spark.read
     .schema(CarSchema.schema)
     .option("header", "true")
-    .csv("src/main/resources/data/used_cars_data.csv")
+    .csv("src/main/resources/data/newCleanDataset.csv")
 
   val sc = spark.sparkContext
 

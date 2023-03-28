@@ -1,33 +1,40 @@
-package myDataset
+package myDataset.usedcaranalysis
 
-import org.apache.spark.sql.SparkSession
+import myDataset.analysisaboutdataset.CarSchema
+import org.apache.spark.sql.{Column, SparkSession}
 import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.functions._
 
-object EvolutionOfTheThreeBrandsThatDominateTheMarketIn2021 extends App{
+object Top3MarketBrandRankings2015to2021 extends App{
   val spark = SparkSession.builder()
-    .config("spark.master", "local")
+    .config("spark.master", "local[*]")
     .appName("Car Big Data Application")
     .getOrCreate()
 
   val df = spark.read
     .schema(CarSchema.schema)
     .option("header", "true")
-    .csv("src/main/resources/data/used_cars_data.csv")
+    .csv("src/main/resources/data/newCleanDataset.csv")
 
-  private val filterByYear2021 = df
-    .filter(col("year").isNotNull)
-    .filter(col("year") === 2021)
+  private val labelYear = "year"
+  private val filterByYear = df
+    .filter(col(labelYear).isNotNull)
+    .filter(col(labelYear) >= 2015)
+    .filter(col(labelYear) <= 2021)
+
+  private val labelCarPerBrand = "total_car_per_make_name"
+
+  val percentageFormat: Column => Column = (number: Column) => concat(format_number(number * 100, 2), lit(" %"))
 
   // Group by year and manufacturer's name and count the number of cars.
-  val countOfCarsPerMakeName = filterByYear2021
+  val countOfCarsPerMakeName = filterByYear
     .groupBy("make_name")
-    .agg(count("*").alias("total_car_per_make_name"))
+    .agg(count("*").alias(labelCarPerBrand))
 
   // Sort by descending sales total
-  val df_sorted = countOfCarsPerMakeName.orderBy(desc("total_car_per_make_name"))
+  val df_sorted = countOfCarsPerMakeName.orderBy(desc(labelCarPerBrand))
 
-  // To obtain the first 3 brands by total sales (by filter only those of 2021 are considered).
+  // To obtain the first 3 brands by total sales
   val df_top3 = df_sorted.limit(3)
 
   df_top3.show(600)
@@ -37,37 +44,35 @@ object EvolutionOfTheThreeBrandsThatDominateTheMarketIn2021 extends App{
     */
 
   //Filter by year and per top 3 make names with more cars
-  private val filterByYear = df
-    .filter(col("year").isNotNull)
-    .filter(col("year") >= 2015)
-    .filter(col("year") <= 2021)
-
   val filterPerYearAndThreeMakeNameWithMoreCars = filterByYear.join(df_top3, "make_name")
 
+  private val labelTotalCars = "total_cars"
   // Group by year and manufacturer's name and count the number of cars.
   val countOfCarsPerMakeNamePerYear = filterPerYearAndThreeMakeNameWithMoreCars
-    .groupBy("year", "make_name")
-    .agg(count("*").alias("cantidad_autos"))
+    .groupBy(labelYear, "make_name")
+    .agg(count("*").alias(labelTotalCars))
 
   //Group total car per year
   val totalCarByYear = filterByYear
-    .groupBy("year")
+    .groupBy(labelYear)
     .agg(count("*").alias("total_per_year"))
 
   //Join between two dataframes, to have the total number of cars per year for make names, aggregated to all rows
-  val dfCarsByYearAndMakeNameWithTotalByCarYear = countOfCarsPerMakeNamePerYear.join(totalCarByYear, Seq("year"))
+  val dfCarsByYearAndMakeNameWithTotalByCarYear = countOfCarsPerMakeNamePerYear.join(totalCarByYear, Seq(labelYear))
 
+  private val labelPercentage = "percentage"
   //Add percentage column
   val dfCarWithPercentageByYear = dfCarsByYearAndMakeNameWithTotalByCarYear
-    .withColumn("porcentaje", col("cantidad_autos") / col("total_per_year") * 100)
+    .withColumn(labelPercentage, percentageFormat(col(labelTotalCars) / col("total_per_year")))
+    //.withColumn(labelPercentage, col(labelTotalCars) / col("total_per_year" + labelYear) * 100)
 
   // Sort by year and number of cars in descending order
-  val dfCarWithPercentageByYearDesc = dfCarWithPercentageByYear.orderBy(desc("year"), desc("cantidad_autos"))
+  val dfCarWithPercentageByYearDesc = dfCarWithPercentageByYear.orderBy(desc(labelYear), desc(labelTotalCars))
 
   val dfCarMakeNameWithRankingByYear = dfCarWithPercentageByYearDesc
-    .withColumn("rank", rank().over(Window.partitionBy("year")
-      .orderBy(desc("cantidad_autos"))))
-    .orderBy(desc("year"), asc("rank"))
+    .withColumn("rank", rank().over(Window.partitionBy(labelYear)
+      .orderBy(desc(labelTotalCars))))
+    .orderBy(desc(labelYear), asc("rank"))
 
   dfCarMakeNameWithRankingByYear.show(600)
 
@@ -83,9 +88,7 @@ object EvolutionOfTheThreeBrandsThatDominateTheMarketIn2021 extends App{
   sc
     .parallelize(Seq(csvData), 1)
     .coalesce(1)
-    .saveAsTextFile("src/main/resources/data/csvWith3MarketDominateTheMarketIn2021.csv")
-
-
+    .saveAsTextFile("src/main/resources/data/csvWith3Market.csv")
    */
   spark.stop()
 }

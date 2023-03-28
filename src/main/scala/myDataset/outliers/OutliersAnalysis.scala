@@ -1,5 +1,6 @@
-package myDataset
+package myDataset.outliers
 
+import myDataset.analysisaboutdataset.CarSchema
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
 
@@ -12,16 +13,16 @@ object OutliersAnalysis extends App{
   val df = spark.read
     .schema(CarSchema.schema)
     .option("header", "true")
-    .csv("src/main/resources/data/used_cars_data.csv")
+    .csv("src/main/resources/data/newCleanDataset.csv")
 
   val sc = spark.sparkContext
 
   val totalRowsDataset = df.count()
 
-  val lessThanTheYear1886 = df
-    .filter(col("year") < 1886)
+  val lessThanTheYear1915 = df
+    .filter(col("year") < 1915)
     .agg(count("*").alias("total"))
-    .withColumn("type_of_information", lit("Less than 1886"))
+    .withColumn("type_of_information", lit("Less than 1915"))
     .withColumn("percentage_of_dataset", round(col("total") / totalRowsDataset * 100, 2))
     .select(col("type_of_information"), col("total"), col("percentage_of_dataset"))
 
@@ -32,10 +33,10 @@ object OutliersAnalysis extends App{
     .withColumn("percentage_of_dataset", round(col("total") / totalRowsDataset * 100, 2))
     .select(col("type_of_information"), col("total"), col("percentage_of_dataset"))
 
-  val between1886And1949 = df
-    .filter(col("year") >= 1886 and col("year") <= 1949)
+  val between1915And1949 = df
+    .filter(col("year") >= 1915 and col("year") <= 1949)
     .agg(count("*").alias("total"))
-    .withColumn("type_of_information", lit("1886 to 1949"))
+    .withColumn("type_of_information", lit("1915 to 1949"))
     .withColumn("percentage_of_dataset", round(col("total") / totalRowsDataset * 100, 2))
     .select(col("type_of_information"), col("total"), col("percentage_of_dataset"))
 
@@ -67,11 +68,8 @@ object OutliersAnalysis extends App{
     .withColumn("percentage_of_dataset", round(col("total") / totalRowsDataset * 100, 2))
     .select(col("type_of_information"), col("total"), col("percentage_of_dataset"))
 
-
-
-
-  lessThanTheYear1886.union(olderThanTheYear2021)
-    .union(between1886And1949)
+  lessThanTheYear1915.union(olderThanTheYear2021)
+    .union(between1915And1949)
     .union(between1950And1999)
     .union(between2000And2014)
     .union(between2014And2021)
