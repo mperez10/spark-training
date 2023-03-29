@@ -903,7 +903,7 @@ The evolution graph (between 2015 and 2021) of the three brands that dominated t
 
 ### Historical Segment By Brand And Price
 
-In HistoricalSegmentByBrandAndPrice.scala file you will be able to find the code needed to see the historical segment per price and per brand.
+In HistoricalSegmentByBrandAndPrice.scala file you will be able to find the code needed to see the historical segment by price and brand.
 A small snippet of code is shared below:
 
 ```scala
@@ -939,8 +939,8 @@ A small snippet of code is shared below:
 
 Below you can see the resulting dataframe:
 
-|year|    make_name|total_cars|total_per_year|          percentaje |rank|
-|-------------------------|---------:|-----------:|-----------:|--------------------:|-----------:|
+|year|    make_name|total_cars|total_per_year|          percentaje |
+|-------------------------|---------:|-----------:|-----------:|--------------------:|
 |         Ford|       Medium| 29626.89|    210023|    7.00 %|
 |    Chevrolet|       Medium| 28782.01|    171479|    5.72 %|
 |         Ford|         High| 52296.35|    144515|    4.82 %|
