@@ -76,19 +76,5 @@ object Top3MarketBrandRankings2015to2021 extends App{
 
   dfCarMakeNameWithRankingByYear.show(600)
 
-  /*
-  // Write a csv in columnar form to a single file
-  //val rows = withRank.collect().map(_.toSeq.map(_.toString))
-  val rows = dfCarMakeNameWithRankingByYear.collect().map(_.toSeq.map {
-    case d: Double => d.toString.replace(".", ",")
-    case other => other.toString
-  })
-  val csvData = rows.map(_.mkString(";")).mkString("\n")
-
-  sc
-    .parallelize(Seq(csvData), 1)
-    .coalesce(1)
-    .saveAsTextFile("src/main/resources/data/csvWith3Market.csv")
-   */
   spark.stop()
 }

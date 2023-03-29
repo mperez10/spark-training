@@ -262,9 +262,13 @@ In this file you will be able to find the code needed to see the evolution of th
 
 In this file you will be able to find the code needed to see the evolution of the three brands that dominate the market in 2021.
 
-### HistoricalSegmentPerBrandAndPrice
+### HistoricalSegmentByBrandAndPrice.scala
 
 In this file you will be able to find the code needed to see the historical segment per price and per brand.
+
+### HistoricalSegmentByBrand.scala
+
+In this file you will be able to find the code needed to see the historical segments by brand.
 
 ## Questions to answer with the dataset
 
@@ -277,7 +281,29 @@ To begin with, the years to identify should be from 1915 to 2021 (last year of t
 
 -Percentage of values below the year 1915: 0.0%.
 
-The code for the percentage calculation can be found in the OutliersAnalysis.scala file. The resulting dataframe according to the dataset we work with is the one we see below:
+The code for the percentage calculation can be found in the OutliersAnalysis.scala file.
+
+```scala
+  val lessThanTheYear1915 = df
+      .filter(col("year") < 1915)
+      .agg(count("*").alias("total"))
+      .withColumn("type_of_information", lit("Less than 1915"))
+      .withColumn("percentage_of_dataset", round(col("total") / totalRowsDataset * 100, 2))
+      .select(col("type_of_information"), col("total"), col("percentage_of_dataset"))
+
+  //similar code for between1915And1949, between1950And1999, between2000And2014, between2014And2021, yearNulls
+
+  lessThanTheYear1915.union(olderThanTheYear2021)
+    .union(between1915And1949)
+    .union(between1950And1999)
+    .union(between2000And2014)
+    .union(between2014And2021)
+    .union(yearNulls)
+    .orderBy(col("total").desc)
+    .show()
+```
+
+The resulting dataframe according to the dataset we work with is the one we see below:
 
 | type_of_information                    |     total | percentage_of_dataset |
 |-------------------------|----------:|-----------:|
@@ -290,7 +316,8 @@ The code for the percentage calculation can be found in the OutliersAnalysis.sca
 |  Greater than 2021|      0|                  0.0|
 
 
-On the other hand, the number of vehicles per year between 1915 and 1999, is always less than 3%, so it was considered that in order to have a more accurate analysis of the current market, all useful data from 2015 to 2021 (which this range covers 86.12% of the total dataset) should be taken into account.
+On the other hand, the number of vehicles per year between 1915 and 1999, is always less than 3%,
+so it was considered that in order to have a more accurate analysis of the current market, all useful data from 2015 to 2021 (which this range covers 86.12% of the total dataset) should be taken into account.
 For the analysis in question, it was decided to consider all the years with at least 3% of cars in the useful data records.
 
 | year  | total_cars_per_year | percentage_of_dataset |
@@ -304,7 +331,29 @@ For the analysis in question, it was decided to consider all the years with at l
 |2015|                  92548|                         3.48|
 |2014|                  76448|                         2.87|
 
-The code of this summary can be seen in the file CarAnalysisPerYear.scala
+The code of this summary can be seen in the file CarAnalysisPerYear.scala. A small fragment is shared below:
+
+```scala
+    val year2014 = df
+        .filter(col(labelYear) === 2014)
+        .agg(count("*").alias(labelTotalPerYear + labelYear))
+        .withColumn(labelYear, lit("2014"))
+        .withColumn(percentageOfDataset, round(col(labelTotalPerYear + labelYear) / totalRowsDataset * 100, 2))
+        .selec  t(col(labelYear), col(labelTotalPerYear + labelYear), col(percentageOfDataset))
+
+    // similar code for year2015, year2016, year2017, year2018, year2019, year2020, year2021
+
+    year2014
+      .union(year2015)
+      .union(year2016)
+      .union(year2017)
+      .union(year2018)
+      .union(year2019)
+      .union(year2020)
+      .union(year2021)
+      .orderBy(col(labelYear).desc)
+      .show()
+```
 
 ### General summary of dataset information
 
@@ -316,7 +365,6 @@ N/A: Information with unreadable values (wrong formats, missing fields).
 
 Outlier: It is the information that is part of the outliers.
 
-
 | type_of_data                    | total_rows | percentage_of_dataset |
 |-------------------------|---------:|-----------:|
 |Full Dataset|   3000210|                100.0|
@@ -324,13 +372,56 @@ Outlier: It is the information that is part of the outliers.
 |     Outlier|    271988|                 9.07|
 |         N/A|       711|                 0.02|
 
-The code of this summary can be seen in the file DatasetAnalysis.scala
+The code of this summary can be seen in the file DatasetAnalysis.scala. A small fragment is shared below:
+
+```scala
+  val cleanInformation = yearCounts
+    .filter(col("count") > 55000 and col("year") =!= "N/A")
+    .agg(sum("count").alias("total_rows"))
+    .withColumn("type_of_data", lit("Useful"))
+    .withColumn("percentage_of_dataset", round(col("total_rows") / totalRowsDataset * 100, 2))
+    .select(col("type_of_data"), col("total_rows"), col("percentage_of_dataset"))
+
+  val yearOutliers = yearCounts
+    .filter(col("count") <= 55000)
+    .agg(sum("count").alias("total_rows"))
+    .withColumn("type_of_data", lit("Outlier"))
+    .withColumn("percentage_of_dataset", round(col("total_rows") / totalRowsDataset * 100, 2))
+    .select(col("type_of_data"), col("total_rows"), col("percentage_of_dataset"))
+
+  val yearNulls = yearCounts
+    .filter(col("year") === "N/A")
+    .agg(sum("count").alias("total_rows"))
+    .withColumn("type_of_data", lit("N/A"))
+    .withColumn("percentage_of_dataset", round(col("total_rows") / totalRowsDataset * 100, 2))
+    .select(col("type_of_data"), col("total_rows"), col("percentage_of_dataset"))
+
+  totalDataset.union(cleanInformation).union(yearOutliers).union(yearNulls).show()
+
+```
 
 ### What is the ranking by year of car brands?
 
-In order to be able to answer and give visibility of this question, what was done was to put together a query that has the total cars by year (regardless of brand), and then calculate the total cars by brand.
-Having these two pieces of information, we can now get the percentage of dominance of a brand in the market according to the model.
-The query can be seen in the PercentageOfCarBrandsPerYear.scala file.
+In order to be able to answer and give visibility of this question, what was done was to put together a query that has the total cars by year (regardless of brand),
+and then calculate the total cars by brand.
+Having these two pieces of information, we can now get the percentage of dominance of a brand in the market according to year.
+The query can be seen in the PercentageOfCarBrandsPerYear.scala file. A small fragment is shared below:
+
+```scala
+  // Group by year and manufacturer's name and count the number of cars.
+  val countOfCarsPerMakeNamePerYear = filterByYear
+    .groupBy("year", "make_name")
+    .agg(count("*").alias(labelTotalCars))
+
+  private val totalPerYear = "total_per_year"
+  val totalCarByYear = filterByYear
+    .groupBy("year")
+    .agg(count("*").alias(totalPerYear))
+
+  //Join between two dataframes, to have the total number of cars per year for make names, aggregated to all rows
+  val dfCarsByYearAndMakeNameWithTotalByCarYear = countOfCarsPerMakeNamePerYear.join(totalCarByYear, Seq("year"))
+```
+
 Below are graphs based on the information obtained from the query:
 
 ### 2021
@@ -692,14 +783,48 @@ Number of times in the top three ranking between 2015 and 2021:
 |      Kia|                  1|
 |  Hyundai|                  1|
 
-The code of this ranking can be seen in the file NumberTimesInRanking.scala
+The code of this ranking can be seen in the file NumberTimesInRanking.scala. A small fragment is shared below:
+
+```scala
+  df.toDF("year", "make_name", "total_per_make_name_per_year", "total_car_in_year", "percentage_per_year", "ranking" )
+  .filter(col("ranking") <= 3)
+  .groupBy(col("make_name"))
+  .agg(count("*").alias("total_times_in_top3"))
+  .orderBy(col("total_times_in_top3").desc)
+  .show()
+```
 
 Chevrolet is the car brands that have been part of all rankings.
 
 Hyundai and Kia, despite only being part of the ranking once between 2015 and 2021, in 2021 are the leaders together with Chevrolet in number of cars registered.
 
 ### How is the evolution of the three brands with the most cars registered between 2015 and 2021?
-The three brands that led the car market between 2015 and 2021 were Ford, Chevrolet and Toyota. The query can be seen in the Top3MarketBrandRankings2015to2021.scala file. The evolution graph can be seen below:
+The three brands that led the car market between 2015 and 2021 were Ford, Chevrolet and Toyota.
+The query can be seen in the Top3MarketBrandRankings2015to2021.scala file. A small snippet of code is shared below:
+
+```scala
+    val filterByYear = df
+      .filter(col(labelYear).isNotNull)
+      .filter(col(labelYear) >= 2015)
+      .filter(col(labelYear) <= 2021)
+    
+    val labelCarPerBrand = "total_car_per_make_name"
+
+    val percentageFormat: Column => Column = (number: Column) => concat(format_number(number * 100, 2), lit(" %"))
+    
+    // Group by year and manufacturer's name and count the number of cars.
+    val countOfCarsPerMakeName = filterByYear
+      .groupBy("make_name")
+      .agg(count("*").alias(labelCarPerBrand))
+    
+    // Sort by descending sales total
+    val df_sorted = countOfCarsPerMakeName.orderBy(desc(labelCarPerBrand))
+    
+    // To obtain the first 3 brands by total sales
+    val df_top3 = df_sorted.limit(3)
+```
+
+The evolution graph can be seen below:
 
 
 |                     year |    make_name|total_cars|total_per_year|          percentaje |rank|
@@ -733,7 +858,22 @@ The three brands that led the car market between 2015 and 2021 were Ford, Chevro
 Of the three brands that dominated the market between 2015 and 2021, Ford, Toyota and Chevrolet, only the latter appears in the 2021 ranking, and it appears in second place.
 
 ### How is the evolution of the three brands that dominate the market in 2021?
-The three brands that dominated the car market in 2021 were Hyundai, Kia and Toyota. The query can be seen in the EvolutionOfTheThreeBrandsThatDominateTheMarketIn2021.scala file. The evolution graph (between 2015 and 2021) of the three brands that dominated the market in 2021 can be viewed below:
+The three brands that dominated the car market in 2021 were Hyundai, Kia and Toyota.
+The query can be seen in the EvolutionOfTheThreeBrandsThatDominateTheMarketIn2021.scala file.
+A small snippet of code is shared below:
+
+```scala
+  val filterByYear2021 = df.filter(col("year").isNotNull).filter(col("year") === 2021)
+  // Group by year and manufacturer's name and count the number of cars.
+  val countOfCarsPerMakeName = filterByYear2021
+    .groupBy("make_name")
+    .agg(count("*").alias("total_car_per_make_name"))
+  // Sort by descending sales total
+  val df_sorted = countOfCarsPerMakeName.orderBy(desc("total_car_per_make_name"))
+  // To obtain the first 3 brands by total sales (by filter only those of 2021 are considered).
+  val df_top3 = df_sorted.limit(3)
+```
+The evolution graph (between 2015 and 2021) of the three brands that dominated the market in 2021 can be viewed below:
 
 |year|    make_name|total_cars|total_per_year|          percentaje |rank|
 |-------------------------|---------:|-----------:|-----------:|--------------------:|-----------:|
@@ -761,7 +901,43 @@ The three brands that dominated the car market in 2021 were Hyundai, Kia and Toy
 
 ![](./src/main/resources/images/2-evolution2.png)
 
-### Historical Segment Per Brand And Price
+### Historical Segment By Brand And Price
+
+In HistoricalSegmentByBrandAndPrice.scala file you will be able to find the code needed to see the historical segment per price and per brand.
+A small snippet of code is shared below:
+
+```scala
+  val lowPrice = 20000
+  val highPrice = 40000
+
+  def getPriceSegment(price: Double): String = {
+    if (price < lowPrice) {
+      "Low"
+    } else if (price >= lowPrice && price < highPrice) {
+      "Medium"
+    } else {
+      "High"
+    }
+  }
+
+  val priceSegmentUDF = udf(getPriceSegment _)
+  val priceSegmentType = StringType
+
+  val segmentedData = data
+    .withColumn("price_segment", priceSegmentUDF(col("price")).cast(priceSegmentType))
+
+  //segmentedData.select("make_name", "year", "price", "price_segment").show()
+  val segmentedDataByMakeNameAndPrice = segmentedData.groupBy("make_name", "price_segment")
+    .agg(
+      round(avg("price"), 2).alias("avg_price"),
+      count("make_name").alias("num_models")
+    )
+    .withColumn("percentage", percentageFormat(col("num_models") / totalRows))
+    .filter(col("num_models") > 1000)
+    .orderBy(col("num_models").desc)
+```
+
+Below you can see the resulting dataframe:
 
 |year|    make_name|total_cars|total_per_year|          percentaje |rank|
 |-------------------------|---------:|-----------:|-----------:|--------------------:|-----------:|
@@ -796,6 +972,193 @@ The three brands that dominated the car market in 2021 were Hyundai, Kia and Toy
 |   Volkswagen|       Medium| 27685.37|     35851|    1.19 %|
 |Mercedes-Benz|         High| 67405.17|     34936|    1.16 %|
 |   Volkswagen|          Low|  13358.8|     32935|    1.10 %|
+
+![](./src/main/resources/images/historical.png)
+
+### Car segment history by brand
+
+In this analysis, we have a summary of the percentage occupied by each brand and segment in the total dataset of the cars listed in Cargurus.
+The segments and the percentage of repetition of each segment in the dataset can be seen in the following table.
+
+
+|body_type|    count_by_brand|percentage|
+|-------------------------|---------:|-----------:|
+|SUV / Crossover|       1416278|   47.21 %|
+|          Sedan|        741961|   24.73 %|
+|   Pickup Truck|        474543|   15.82 %|
+|      Hatchback|         88361|    2.95 %|
+|        Minivan|         79792|    2.66 %|
+|          Coupe|         71597|    2.39 %|
+|            Van|         47163|    1.57 %|
+|          Wagon|         40502|    1.35 %|
+|    Convertible|         26004|    0.87 %|
+|   Other brands|         14009|    0.47 %|
+
+The file containing this code is the DatasetAnalysisInFieldBodyType.scala. A small code snippet can be seen below:
+
+```scala
+  val total = df.count()
+
+  val grouped = df.groupBy("body_type")
+    .agg(count("*").alias("count_by_brand"))
+
+  val mainBrands = grouped
+    .withColumn("percentage", percentageFormat(col("count_by_brand") / total))
+    .orderBy(col("count_by_brand").desc)
+    .filter(col("body_type") =!= "null" and col("count_by_brand") > 1000)
+
+  val otherBrands = grouped
+    .filter(col("body_type").isNull or col("count_by_brand") <= 1000)
+    .agg(sum("count_by_brand").alias("count_by_brand"))
+    .withColumn("percentage", percentageFormat(col("count_by_brand") / total))
+    .withColumn("body_type", lit("Other brands"))
+    .select(col("body_type"), col("count_by_brand"), col("percentage"))
+
+  mainBrands.union(otherBrands).show(600)
+```
+
+The summary table of the auto segments by brand is as follows:
+
+
+|make_name|    body_type|num_models|percentage|
+|-------------------------|---------:|-----------:|-----------:|
+|         Ford|SUV / Crossover|    180961|    6.03 %|
+|         Ford|   Pickup Truck|    176004|    5.87 %|
+|    Chevrolet|SUV / Crossover|    173184|    5.77 %|
+|         Jeep|SUV / Crossover|    156777|    5.23 %|
+|       Nissan|SUV / Crossover|    105412|    3.51 %|
+|    Chevrolet|   Pickup Truck|    103631|    3.45 %|
+|       Toyota|          Sedan|     97846|    3.26 %|
+|          RAM|   Pickup Truck|     95810|    3.19 %|
+|        Honda|SUV / Crossover|     87866|    2.93 %|
+|       Nissan|          Sedan|     87115|    2.90 %|
+|       Toyota|SUV / Crossover|     86833|    2.89 %|
+|        Honda|          Sedan|     83164|    2.77 %|
+|         Ford|          Sedan|     67958|    2.27 %|
+|      Hyundai|SUV / Crossover|     67954|    2.26 %|
+|          GMC|SUV / Crossover|     59505|    1.98 %|
+|    Chevrolet|          Sedan|     58465|    1.95 %|
+|        Buick|SUV / Crossover|     57353|    1.91 %|
+|      Hyundai|          Sedan|     56420|    1.88 %|
+|          Kia|SUV / Crossover|     55195|    1.84 %|
+|       Subaru|SUV / Crossover|     38924|    1.30 %|
+|          GMC|   Pickup Truck|     37907|    1.26 %|
+|          Kia|          Sedan|     37736|    1.26 %|
+|   Volkswagen|          Sedan|     36939|    1.23 %|
+|        Mazda|SUV / Crossover|     36336|    1.21 %|
+|     Cadillac|SUV / Crossover|     31986|    1.07 %|
+|        Dodge|SUV / Crossover|     30978|    1.03 %|
+|   Volkswagen|SUV / Crossover|     29067|    0.97 %|
+|          BMW|SUV / Crossover|     26433|    0.88 %|
+|Mercedes-Benz|SUV / Crossover|     25689|    0.86 %|
+|       Toyota|   Pickup Truck|     25634|    0.85 %|
+|Mercedes-Benz|          Sedan|     25600|    0.85 %|
+|          BMW|          Sedan|     25547|    0.85 %|
+|         Ford|            Van|     22411|    0.75 %|
+|        Lexus|SUV / Crossover|     22276|    0.74 %|
+|     Chrysler|        Minivan|     21598|    0.72 %|
+|        Dodge|        Minivan|     21564|    0.72 %|
+|      Lincoln|SUV / Crossover|     21561|    0.72 %|
+|        Acura|SUV / Crossover|     20573|    0.69 %|
+|        Dodge|          Sedan|     20512|    0.68 %|
+|        Honda|        Minivan|     19690|    0.66 %|
+|     INFINITI|SUV / Crossover|     19163|    0.64 %|
+|         Audi|SUV / Crossover|     16853|    0.56 %|
+|       Toyota|      Hatchback|     16199|    0.54 %|
+|        Lexus|          Sedan|     16092|    0.54 %|
+|         Audi|          Sedan|     15773|    0.53 %|
+|   Land Rover|SUV / Crossover|     14960|    0.50 %|
+|       Nissan|   Pickup Truck|     14901|    0.50 %|
+|   Mitsubishi|SUV / Crossover|     14532|    0.48 %|
+|         Ford|          Coupe|     14313|    0.48 %|
+|        Volvo|SUV / Crossover|     14286|    0.48 %|
+|     Cadillac|          Sedan|     14059|    0.47 %|
+|    Chevrolet|      Hatchback|     13824|    0.46 %|
+|        Honda|      Hatchback|     13585|    0.45 %|
+|     Chrysler|          Sedan|     12933|    0.43 %|
+|        Dodge|          Coupe|     12702|    0.42 %|
+|       Subaru|          Sedan|     12227|    0.41 %|
+|       Subaru|          Wagon|     11816|    0.39 %|
+|         Jeep|   Pickup Truck|     11634|    0.39 %|
+|    Chevrolet|          Coupe|     11449|    0.38 %|
+|      Lincoln|          Sedan|     11148|    0.37 %|
+|        Mazda|          Sedan|     11046|    0.37 %|
+|       Toyota|        Minivan|      9924|    0.33 %|
+|        Acura|          Sedan|      9830|    0.33 %|
+|          Kia|          Wagon|      9236|    0.31 %|
+|    Chevrolet|            Van|      7774|    0.26 %|
+|     INFINITI|          Sedan|      7647|    0.25 %|
+|        Buick|          Sedan|      6921|    0.23 %|
+|      Porsche|SUV / Crossover|      6649|    0.22 %|
+|          RAM|            Van|      6527|    0.22 %|
+|      Hyundai|      Hatchback|      6501|    0.22 %|
+|         Ford|      Hatchback|      6448|    0.21 %|
+|   Volkswagen|      Hatchback|      6442|    0.21 %|
+|        Honda|          Coupe|      6069|    0.20 %|
+|Mercedes-Benz|            Van|      5468|    0.18 %|
+|       Subaru|      Hatchback|      5365|    0.18 %|
+|       Nissan|      Hatchback|      5255|    0.18 %|
+|        Volvo|          Sedan|      5109|    0.17 %|
+|         Ford|    Convertible|      5058|    0.17 %|
+|          Kia|        Minivan|      4916|    0.16 %|
+|Mercedes-Benz|    Convertible|      4790|    0.16 %|
+|    Chevrolet|          Wagon|      4779|    0.16 %|
+|        Dodge|   Pickup Truck|      4756|    0.16 %|
+|       Jaguar|SUV / Crossover|      4493|    0.15 %|
+|          BMW|          Coupe|      4240|    0.14 %|
+|Mercedes-Benz|          Coupe|      4115|    0.14 %|
+|         MINI|      Hatchback|      4003|    0.13 %|
+|        Honda|   Pickup Truck|      3801|    0.13 %|
+|      Genesis|          Sedan|      3740|    0.12 %|
+|    Chevrolet|    Convertible|      3382|    0.11 %|
+|        Mazda|      Hatchback|      3238|    0.11 %|
+|   Mitsubishi|          Sedan|      3137|    0.10 %|
+|      Hyundai|          Coupe|      3012|    0.10 %|
+|       Jaguar|          Sedan|      2955|    0.10 %|
+|         MINI|SUV / Crossover|      2950|    0.10 %|
+|       Nissan|            Van|      2812|    0.09 %|
+|          BMW|    Convertible|      2770|    0.09 %|
+|      Porsche|          Coupe|      2569|    0.09 %|
+|   Mitsubishi|      Hatchback|      2421|    0.08 %|
+|   Alfa Romeo|          Sedan|      2176|    0.07 %|
+|      Porsche|          Sedan|      2144|    0.07 %|
+|        Volvo|          Wagon|      2115|    0.07 %|
+|          BMW|          Wagon|      2048|    0.07 %|
+|     Maserati|          Sedan|      1984|    0.07 %|
+|   Volkswagen|          Wagon|      1952|    0.07 %|
+|          GMC|            Van|      1853|    0.06 %|
+|         Ford|          Wagon|      1760|    0.06 %|
+|   Alfa Romeo|SUV / Crossover|      1722|    0.06 %|
+|         Audi|          Coupe|      1722|    0.06 %|
+|        Tesla|          Sedan|      1704|    0.06 %|
+|         FIAT|      Hatchback|      1610|    0.05 %|
+|      Porsche|    Convertible|      1535|    0.05 %|
+|     INFINITI|          Coupe|      1453|    0.05 %|
+|        Mazda|    Convertible|      1334|    0.04 %|
+|          Kia|      Hatchback|      1258|    0.04 %|
+|      Pontiac|          Sedan|      1218|    0.04 %|
+|         MINI|          Wagon|      1216|    0.04 %|
+|       Nissan|          Coupe|      1195|    0.04 %|
+|         Audi|          Wagon|      1095|    0.04 %|
+|       Toyota|          Coupe|      1084|    0.04 %|
+|        Lexus|          Coupe|      1038|    0.03 %|
+
+The code for this dataframe can be seen in the HistoricalSegmentsByBrand.scala file. A small code snippet can be seen below:
+
+```scala
+  val totalRows = data.count()
+  val percentageFormat: Column => Column = (number: Column) => concat(format_number(number * 100, 2), lit(" %"))
+  val segmentedDataByMakeNameAndPrice = data.groupBy("make_name", "body_type")
+    .agg(
+      count("*").alias("num_models")
+    )
+    .withColumn("percentage", percentageFormat(col("num_models") / totalRows))
+    .filter(col("body_type").isNotNull)
+    .filter(col("num_models") > 1000)
+    .orderBy(col("num_models").desc)
+
+  segmentedDataByMakeNameAndPrice.show(600)
+```
 
 ### Conclusions
 

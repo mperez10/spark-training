@@ -5,7 +5,7 @@ import org.apache.spark.sql.functions._
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.{Column, SparkSession}
 
-object HistoricalSegmentPerBrandAndPrice extends App{
+object HistoricalSegmentByBrandAndPrice extends App{
 
   val spark = SparkSession.builder()
     .config("spark.master", "local")

@@ -5,7 +5,7 @@ import org.apache.spark.sql.{Column, SparkSession}
 import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.functions._
 
-object PercentageOfCarBrandsPerYear extends App{
+object PercentageOfCarBrandsByYear extends App{
   val spark = SparkSession.builder()
     .config("spark.master", "local[*]")
     .appName("Car Big Data Application")
@@ -25,6 +25,7 @@ object PercentageOfCarBrandsPerYear extends App{
 
   val percentageFormat: Column => Column = (number: Column) => concat(format_number(number * 100, 2), lit(" %"))
   private var labelTotalCars = "total_cars"
+
   // Group by year and manufacturer's name and count the number of cars.
   val countOfCarsPerMakeNamePerYear = filterByYear
     .groupBy("year", "make_name")
@@ -52,21 +53,5 @@ object PercentageOfCarBrandsPerYear extends App{
 
   dfCarMakeNameWithRankingByYear.show(600)
 
-  /*
-  // Write a csv in columnar form to a single file
-  //val rows = withRank.collect().map(_.toSeq.map(_.toString))
-  val rows = dfCarMakeNameWithRankingByYear.collect().map(_.toSeq.map {
-    case d: Double => d.toString.replace(".", ",")
-    case other => other.toString
-  })
-  val csvData = rows.map(_.mkString(";")).mkString("\n")
-
-  sc
-    .parallelize(Seq(csvData), 1)
-    .coalesce(1)
-    .saveAsTextFile("src/main/resources/data/csvfinal.csv")
-
-
-   */
   spark.stop()
 }
