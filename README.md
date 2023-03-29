@@ -975,6 +975,22 @@ Below you can see the resulting dataframe:
 
 ![](./src/main/resources/images/historical.png)
 
+### Conclusions
+
+Of the three brands dominating the 2021 market, only Chevrolet appeared in the previous rankings.
+Kia which appears first in the 2021 ranking, in the 2020 ranking it was ranked 11th.
+Hyundai appearing third in the 2021 ranking, in the 2020 ranking it was ranked 8th.
+
+
+### Final conclusion on "the history and future of brands" for this data set
+
+The dominance in the car market has been varying year after year, but there are some brands that are highly valued by the general public.
+Among these we find Toyota, Ford and Chevrolet.
+We should mention that Chevrolet has been always fighting in the ranking between the years 2015 to 2021.
+It is also worth mentioning that in the last year of the study, 2021, there are brands that promise future growth, such as Kia and Hyundai.
+However, we will only be able to verify this promise with the passage of time and new market studies.
+
+
 ### Car segment history by brand
 
 In this analysis, we have a summary of the percentage occupied by each brand and segment in the total dataset of the cars listed in Cargurus.
@@ -1160,11 +1176,67 @@ The code for this dataframe can be seen in the HistoricalSegmentsByBrand.scala f
   segmentedDataByMakeNameAndPrice.show(600)
 ```
 
-### Conclusions
+From this last table we can find out which segments the brands historically prefer.
+For that we decided to select the brands that historically registered the most cars in our sample, and the brands that in 2021 registered the most cars.
+The brands are as follows:
 
-Of the three brands dominating the 2021 market, only Toyota appeared in the previous rankings (with the exception of 2020 which appeared in rank 4, then appeared in the top three rankings 2015, 2016, 2017, 2018, 2019 and 2021).
-Hyundai appearing first in the 2021 ranking, in the 2020 ranking it was ranked 6th.
-Kia which appears second in the 2021 ranking, in the 2020 ranking it was ranked 8th.
+Ford, Toyota, Chevrolet, Kia and Hyundai.
 
-### Final conclusion
-The dominance in the car market has been varying year after year, but there are some brands that are highly valued by the general public. Among these we find Toyota, Ford and Chevrolet. We should mention that Toyota has been almost always fighting in the ranking between the years 2015 to 2021. It is also worth mentioning that in the last year of the study, 2021, there are brands that promise future growth, such as Hyundai and Kia. However, we will only be able to verify this promise with the passage of time and new market studies.
+To do so, we applied filters on the resulting dataframe, and sorted by brand to visualize the preferred segments of each of these brands.
+
+Small code snippet below:
+
+```scala
+  val segmentedDataByMakeNameAndPrice = data.groupBy("make_name", "body_type")
+    .agg(
+      count("*").alias("num_models")
+    )
+    .withColumn("percentage", percentageFormat(col("num_models") / totalRows))
+    .filter(col("body_type").isNotNull)
+    .filter(col("num_models") > 1000)
+    .filter(col("make_name").equalTo("Ford")
+      or col("make_name").equalTo("Hyundai")
+      or col("make_name").equalTo("Toyota")
+      or col("make_name").equalTo("Chevrolet")
+      or col("make_name").equalTo("Kia")
+      )
+    .orderBy(col("num_models").desc)
+    .orderBy(col("make_name").desc)
+``` 
+
+Resulting dataframe:
+
+
+| make_name                |    body_type    | num_models  | percentage  |
+|:-------------------------|:---------------:|:-----------:|:-----------:|
+|   Toyota|          Sedan|     97846|    3.26 %|
+|   Toyota|SUV / Crossover|     86833|    2.89 %|
+|   Toyota|   Pickup Truck|     25634|    0.85 %|
+|   Toyota|      Hatchback|     16199|    0.54 %|
+|   Toyota|        Minivan|      9924|    0.33 %|
+|   Toyota|          Coupe|      1084|    0.04 %|
+|      Kia|SUV / Crossover|     55195|    1.84 %|
+|      Kia|          Sedan|     37736|    1.26 %|
+|      Kia|          Wagon|      9236|    0.31 %|
+|      Kia|        Minivan|      4916|    0.16 %|
+|      Kia|      Hatchback|      1258|    0.04 %|
+|  Hyundai|SUV / Crossover|     67954|    2.26 %|
+|  Hyundai|          Sedan|     56420|    1.88 %|
+|  Hyundai|      Hatchback|      6501|    0.22 %|
+|  Hyundai|          Coupe|      3012|    0.10 %|
+|     Ford|SUV / Crossover|    180961|    6.03 %|
+|     Ford|   Pickup Truck|    176004|    5.87 %|
+|     Ford|          Sedan|     67958|    2.27 %|
+|     Ford|            Van|     22411|    0.75 %|
+|     Ford|          Coupe|     14313|    0.48 %|
+|     Ford|      Hatchback|      6448|    0.21 %|
+|     Ford|    Convertible|      5058|    0.17 %|
+|     Ford|          Wagon|      1760|    0.06 %|
+|Chevrolet|SUV / Crossover|    173184|    5.77 %|
+|Chevrolet|   Pickup Truck|    103631|    3.45 %|
+|Chevrolet|          Sedan|     58465|    1.95 %|
+|Chevrolet|      Hatchback|     13824|    0.46 %|
+|Chevrolet|          Coupe|     11449|    0.38 %|
+|Chevrolet|            Van|      7774|    0.26 %|
+|Chevrolet|          Wagon|      4779|    0.16 %|
+|Chevrolet|    Convertible|      3382|    0.11 %|

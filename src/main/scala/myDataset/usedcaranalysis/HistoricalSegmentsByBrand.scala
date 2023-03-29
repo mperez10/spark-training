@@ -23,7 +23,13 @@ object HistoricalSegmentsByBrand extends App{
     .withColumn("percentage", percentageFormat(col("num_models") / totalRows))
     .filter(col("body_type").isNotNull)
     .filter(col("num_models") > 1000)
-    .orderBy(col("num_models").desc)
+    .filter(col("make_name").equalTo("Ford")
+      or col("make_name").equalTo("Hyundai")
+      or col("make_name").equalTo("Toyota")
+      or col("make_name").equalTo("Chevrolet")
+      or col("make_name").equalTo("Kia")
+      )
+    .orderBy(col("make_name").desc, col("num_models").desc)
 
   segmentedDataByMakeNameAndPrice.show(600)
 
