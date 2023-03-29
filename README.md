@@ -1234,3 +1234,14 @@ Resulting dataframe:
 |Chevrolet|    Convertible|      1925|    0.07 %|
 
 Percentages are in relation to the selected sampling, they represent the percentage of total cars between the years 2015 and 2021.
+
+#### Main segments of the selected brands
+
+| Company | Main segment | 
+|:--------|:------------:|
+| Toyota  |    Sedan     |
+| Chevrolet  |    SUV / Crossover     |
+| Kia  |    SUV / Crossover     |
+| Hyundai  |    SUV / Crossover     |
+| Ford  |    SUV / Crossover     |
+
