@@ -13,6 +13,9 @@ object DatasetAnalysisInFieldBodyType extends App{
     .schema(CarSchema.schema)
     .option("header", "true")
     .csv("src/main/resources/data/newCleanDataset.csv")
+    .filter(col("year").isNotNull)
+    .filter(col("year") >= 2015)
+    .filter(col("year") <= 2021)
 
   val percentageFormat: Column => Column = (number: Column) => concat(format_number(number * 100, 2), lit(" %"))
   val total = df.count()

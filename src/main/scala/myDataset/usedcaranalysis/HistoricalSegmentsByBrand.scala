@@ -13,6 +13,9 @@ object HistoricalSegmentsByBrand extends App{
     .schema(CarSchema.schema)
     .option("header", "true")
     .load("src/main/resources/data/newCleanDataset.csv")
+    .filter(col("year").isNotNull)
+    .filter(col("year") >= 2015)
+    .filter(col("year") <= 2021)
 
   val totalRows = data.count()
   val percentageFormat: Column => Column = (number: Column) => concat(format_number(number * 100, 2), lit(" %"))
@@ -23,13 +26,7 @@ object HistoricalSegmentsByBrand extends App{
     .withColumn("percentage", percentageFormat(col("num_models") / totalRows))
     .filter(col("body_type").isNotNull)
     .filter(col("num_models") > 1000)
-    .filter(col("make_name").equalTo("Ford")
-      or col("make_name").equalTo("Hyundai")
-      or col("make_name").equalTo("Toyota")
-      or col("make_name").equalTo("Chevrolet")
-      or col("make_name").equalTo("Kia")
-      )
-    .orderBy(col("make_name").desc, col("num_models").desc)
+    .orderBy(col("num_models").desc)
 
   segmentedDataByMakeNameAndPrice.show(600)
 

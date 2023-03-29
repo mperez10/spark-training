@@ -24,7 +24,7 @@ object PercentageOfCarBrandsByYear extends App{
     .filter(col("year") <= 2021)
 
   val percentageFormat: Column => Column = (number: Column) => concat(format_number(number * 100, 2), lit(" %"))
-  private var labelTotalCars = "total_cars"
+  private val labelTotalCars = "total_cars"
 
   // Group by year and manufacturer's name and count the number of cars.
   val countOfCarsPerMakeNamePerYear = filterByYear

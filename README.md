@@ -427,42 +427,42 @@ Below are graphs based on the information obtained from the query:
 ### 2021
 In the year 2021, we see that the three leading brands in the market were Kia, Chevrolet y Hyunday.
 
-|year|    make_name|total_cars|total_per_year|          porcentaje|rank|
-|-------------------------|---------:|-----------:|-----------:|-----------:|-----------:|
-|2021|          Kia|     29955|        176513|   16.97 %|   1|
-|2021|    Chevrolet|     25220|        176513|   14.29 %|   2|
-|2021|      Hyundai|     23282|        176513|   13.19 %|   3|
-|2021|       Toyota|     20229|        176513|   11.46 %|   4|
-|2021|        Honda|     16508|        176513|    9.35 %|   5|
-|2021|         Jeep|     10691|        176513|    6.06 %|   6|
-|2021|          BMW|      9427|        176513|    5.34 %|   7|
-|2021|       Subaru|      9392|        176513|    5.32 %|   8|
-|2021|          GMC|      6392|        176513|    3.62 %|   9|
-|2021|   Volkswagen|      6357|        176513|    3.60 %|  10|
-|2021|        Volvo|      4472|        176513|    2.53 %|  11|
-|2021|        Mazda|      2904|        176513|    1.65 %|  12|
-|2021|        Acura|      2798|        176513|    1.59 %|  13|
-|2021|Mercedes-Benz|      2568|        176513|    1.45 %|  14|
-|2021|         MINI|       994|        176513|    0.56 %|  15|
-|2021|         Ford|       875|        176513|    0.50 %|  16|
-|2021|        Buick|       848|        176513|    0.48 %|  17|
-|2021|        Lexus|       787|        176513|    0.45 %|  18|
-|2021|          RAM|       624|        176513|    0.35 %|  19|
-|2021|      Genesis|       555|        176513|    0.31 %|  20|
-|2021|     INFINITI|       432|        176513|    0.24 %|  21|
-|2021|     Cadillac|       318|        176513|    0.18 %|  22|
-|2021|         Audi|       259|        176513|    0.15 %|  23|
-|2021|       Nissan|       215|        176513|    0.12 %|  24|
-|2021|       Jaguar|       165|        176513|    0.09 %|  25|
-|2021|      Porsche|       158|        176513|    0.09 %|  26|
-|2021|      Lincoln|        88|        176513|    0.05 %|  27|
+|year|    make_name|total_cars|total_per_year| percentage_per_year |rank|
+|-------------------------|---------:|-----------:|-----------:|--------------------:|-----------:|
+|2021|          Kia|     29955|        176513|             16.97 % |   1|
+|2021|    Chevrolet|     25220|        176513|             14.29 % |   2|
+|2021|      Hyundai|     23282|        176513|             13.19 % |   3|
+|2021|       Toyota|     20229|        176513|             11.46 % |   4|
+|2021|        Honda|     16508|        176513|              9.35 % |   5|
+|2021|         Jeep|     10691|        176513|              6.06 % |   6|
+|2021|          BMW|      9427|        176513|              5.34 % |   7|
+|2021|       Subaru|      9392|        176513|              5.32 % |   8|
+|2021|          GMC|      6392|        176513|              3.62 % |   9|
+|2021|   Volkswagen|      6357|        176513|              3.60 % |  10|
+|2021|        Volvo|      4472|        176513|              2.53 % |  11|
+|2021|        Mazda|      2904|        176513|              1.65 % |  12|
+|2021|        Acura|      2798|        176513|              1.59 % |  13|
+|2021|Mercedes-Benz|      2568|        176513|              1.45 % |  14|
+|2021|         MINI|       994|        176513|              0.56 % |  15|
+|2021|         Ford|       875|        176513|              0.50 % |  16|
+|2021|        Buick|       848|        176513|              0.48 % |  17|
+|2021|        Lexus|       787|        176513|              0.45 % |  18|
+|2021|          RAM|       624|        176513|              0.35 % |  19|
+|2021|      Genesis|       555|        176513|              0.31 % |  20|
+|2021|     INFINITI|       432|        176513|              0.24 % |  21|
+|2021|     Cadillac|       318|        176513|              0.18 % |  22|
+|2021|         Audi|       259|        176513|              0.15 % |  23|
+|2021|       Nissan|       215|        176513|              0.12 % |  24|
+|2021|       Jaguar|       165|        176513|              0.09 % |  25|
+|2021|      Porsche|       158|        176513|              0.09 % |  26|
+|2021|      Lincoln|        88|        176513|              0.05 % |  27|
 
 ![](./src/main/resources/images/2021.png)
 
 ### 2020
 In the year 2020, we see that the three leading brands in the market were Ford, Chevrolet and Nissan.
 
-|year|    make_name|total_cars|total_per_year|          porcentaje|rank|
+|year|    make_name|total_cars|total_per_year|          percentage_per_year|rank|
 |-------------------------|---------:|-----------:|-----------:|-----------:|-----------:|
 |2020|         Ford|    257928|       1349678|   19.11 %|   1|
 |2020|    Chevrolet|    171233|       1349678|   12.69 %|   2|
@@ -514,7 +514,7 @@ In the year 2020, we see that the three leading brands in the market were Ford, 
 ### 2019
 In the year 2019, we see that the three leading brands in the market were Ford, Nissan and Chevrolet.
 
-|year|    make_name|total_cars|total_per_year|          porcentaje|rank|
+|year|    make_name|total_cars|total_per_year|          percentage_per_year|rank|
 |-------------------------|---------:|-----------:|-----------:|-----------:|-----------:|
 |2019|         Ford|     42926|        284620|   15.08 %|   1|
 |2019|       Nissan|     33395|        284620|   11.73 %|   2|
@@ -566,7 +566,7 @@ In the year 2019, we see that the three leading brands in the market were Ford, 
 ### 2018
 In the year 2018, we see that the three leading brands in the market were Ford, Chevrolet and Toyota.
 
-|year|    make_name|total_cars|total_per_year|          porcentaje|rank|
+|year|    make_name|total_cars|total_per_year|          percentage_per_year|rank|
 |-------------------------|---------:|-----------:|-----------:|-----------:|-----------:|
 |2018|         Ford|     30584|        210357|   14.54 %|   1|
 |2018|    Chevrolet|     29248|        210357|   13.90 %|   2|
@@ -619,7 +619,7 @@ In the year 2018, we see that the three leading brands in the market were Ford, 
 ### 2017
 In the year 2017, we see that the three leading brands in the market were Ford, Chevrolet and Nissan.
 
-|year|    make_name|total_cars|total_per_year|          porcentaje|rank|
+|year|    make_name|total_cars|total_per_year|          percentage_per_year|rank|
 |-------------------------|---------:|-----------:|-----------:|-----------:|-----------:|
 |2017|         Ford|     48466|        347968|   13.93 %|   1|
 |2017|    Chevrolet|     39924|        347968|   11.47 %|   2|
@@ -671,7 +671,7 @@ In the year 2017, we see that the three leading brands in the market were Ford, 
 ### 2016
 In the year 2016, we see that the three leading brands in the market were Ford, Chevrolet and Toyota.
 
-|year|    make_name|total_cars|total_per_year|          porcentaje|rank|
+|year|    make_name|total_cars|total_per_year|          percentage_per_year|rank|
 |-------------------------|---------:|-----------:|-----------:|-----------:|-----------:|
 |2016|         Ford|     18918|        122193|   15.48 %|   1|
 |2016|    Chevrolet|     15277|        122193|   12.50 %|   2|
@@ -722,7 +722,7 @@ In the year 2016, we see that the three leading brands in the market were Ford, 
 ### 2015
 In the year 2015, we see that the three leading brands in the market were Ford, Chevrolet and Toyota:
 
-|year|    make_name|total_cars|total_per_year|          porcentaje|rank|
+|year|    make_name|total_cars|total_per_year|          percentage_per_year|rank|
 |-------------------------|---------:|-----------:|-----------:|-----------:|-----------:|
 |2015|         Ford|     13324|         92548|   14.40 %|   1|
 |2015|    Chevrolet|     13019|         92548|   14.07 %|   2|
@@ -827,7 +827,7 @@ The query can be seen in the Top3MarketBrandRankings2015to2021.scala file. A sma
 The evolution graph can be seen below:
 
 
-|                     year |    make_name|total_cars|total_per_year|          percentaje |rank|
+|                     year |    make_name|total_cars|total_per_year|          percentage_per_year |rank|
 |-------------------------|---------|-----------|-----------|--------------------|-----------:|
 |2021|Chevrolet|     25220|        176513|   14.29 %|   1|
 |2021|   Toyota|     20229|        176513|   11.46 %|   2|
@@ -875,7 +875,7 @@ A small snippet of code is shared below:
 ```
 The evolution graph (between 2015 and 2021) of the three brands that dominated the market in 2021 can be viewed below:
 
-|year|    make_name|total_cars|total_per_year|          percentaje |rank|
+|year|    make_name|total_cars|total_per_year|          percentage_per_year |rank|
 |-------------------------|---------:|-----------:|-----------:|--------------------:|-----------:|
 |2021|      Kia|         29955|        176513|   16.97 %|   1|
 |2021|Chevrolet|         25220|        176513|   14.29 %|   2|
@@ -999,17 +999,18 @@ The segments and the percentage of repetition of each segment in the dataset can
 
 |body_type|    count_by_brand|percentage|
 |-------------------------|---------:|-----------:|
-|SUV / Crossover|       1416278|   47.21 %|
-|          Sedan|        741961|   24.73 %|
-|   Pickup Truck|        474543|   15.82 %|
-|      Hatchback|         88361|    2.95 %|
-|        Minivan|         79792|    2.66 %|
-|          Coupe|         71597|    2.39 %|
-|            Van|         47163|    1.57 %|
-|          Wagon|         40502|    1.35 %|
-|    Convertible|         26004|    0.87 %|
-|   Other brands|         14009|    0.47 %|
+|SUV / Crossover|       1272714|   49.26 %|
+|          Sedan|        615463|   23.82 %|
+|   Pickup Truck|        413563|   16.01 %|
+|      Hatchback|         69900|    2.71 %|
+|        Minivan|         63163|    2.44 %|
+|          Coupe|         50678|    1.96 %|
+|            Van|         41531|    1.61 %|
+|          Wagon|         29399|    1.14 %|
+|    Convertible|         14987|    0.58 %|
+|   Other brands|         12479|    0.48 %|
 
+Percentages are in relation to the selected sampling (between years 2015 and 2021).
 The file containing this code is the DatasetAnalysisInFieldBodyType.scala. A small code snippet can be seen below:
 
 ```scala
@@ -1038,127 +1039,119 @@ The summary table of the auto segments by brand is as follows:
 
 |make_name|    body_type|num_models|percentage|
 |-------------------------|---------:|-----------:|-----------:|
-|         Ford|SUV / Crossover|    180961|    6.03 %|
-|         Ford|   Pickup Truck|    176004|    5.87 %|
-|    Chevrolet|SUV / Crossover|    173184|    5.77 %|
-|         Jeep|SUV / Crossover|    156777|    5.23 %|
-|       Nissan|SUV / Crossover|    105412|    3.51 %|
-|    Chevrolet|   Pickup Truck|    103631|    3.45 %|
-|       Toyota|          Sedan|     97846|    3.26 %|
-|          RAM|   Pickup Truck|     95810|    3.19 %|
-|        Honda|SUV / Crossover|     87866|    2.93 %|
-|       Nissan|          Sedan|     87115|    2.90 %|
-|       Toyota|SUV / Crossover|     86833|    2.89 %|
-|        Honda|          Sedan|     83164|    2.77 %|
-|         Ford|          Sedan|     67958|    2.27 %|
-|      Hyundai|SUV / Crossover|     67954|    2.26 %|
-|          GMC|SUV / Crossover|     59505|    1.98 %|
-|    Chevrolet|          Sedan|     58465|    1.95 %|
-|        Buick|SUV / Crossover|     57353|    1.91 %|
-|      Hyundai|          Sedan|     56420|    1.88 %|
-|          Kia|SUV / Crossover|     55195|    1.84 %|
-|       Subaru|SUV / Crossover|     38924|    1.30 %|
-|          GMC|   Pickup Truck|     37907|    1.26 %|
-|          Kia|          Sedan|     37736|    1.26 %|
-|   Volkswagen|          Sedan|     36939|    1.23 %|
-|        Mazda|SUV / Crossover|     36336|    1.21 %|
-|     Cadillac|SUV / Crossover|     31986|    1.07 %|
-|        Dodge|SUV / Crossover|     30978|    1.03 %|
-|   Volkswagen|SUV / Crossover|     29067|    0.97 %|
-|          BMW|SUV / Crossover|     26433|    0.88 %|
-|Mercedes-Benz|SUV / Crossover|     25689|    0.86 %|
-|       Toyota|   Pickup Truck|     25634|    0.85 %|
-|Mercedes-Benz|          Sedan|     25600|    0.85 %|
-|          BMW|          Sedan|     25547|    0.85 %|
-|         Ford|            Van|     22411|    0.75 %|
-|        Lexus|SUV / Crossover|     22276|    0.74 %|
-|     Chrysler|        Minivan|     21598|    0.72 %|
-|        Dodge|        Minivan|     21564|    0.72 %|
-|      Lincoln|SUV / Crossover|     21561|    0.72 %|
-|        Acura|SUV / Crossover|     20573|    0.69 %|
-|        Dodge|          Sedan|     20512|    0.68 %|
-|        Honda|        Minivan|     19690|    0.66 %|
-|     INFINITI|SUV / Crossover|     19163|    0.64 %|
-|         Audi|SUV / Crossover|     16853|    0.56 %|
-|       Toyota|      Hatchback|     16199|    0.54 %|
-|        Lexus|          Sedan|     16092|    0.54 %|
-|         Audi|          Sedan|     15773|    0.53 %|
-|   Land Rover|SUV / Crossover|     14960|    0.50 %|
-|       Nissan|   Pickup Truck|     14901|    0.50 %|
-|   Mitsubishi|SUV / Crossover|     14532|    0.48 %|
-|         Ford|          Coupe|     14313|    0.48 %|
-|        Volvo|SUV / Crossover|     14286|    0.48 %|
-|     Cadillac|          Sedan|     14059|    0.47 %|
-|    Chevrolet|      Hatchback|     13824|    0.46 %|
-|        Honda|      Hatchback|     13585|    0.45 %|
-|     Chrysler|          Sedan|     12933|    0.43 %|
-|        Dodge|          Coupe|     12702|    0.42 %|
-|       Subaru|          Sedan|     12227|    0.41 %|
-|       Subaru|          Wagon|     11816|    0.39 %|
-|         Jeep|   Pickup Truck|     11634|    0.39 %|
-|    Chevrolet|          Coupe|     11449|    0.38 %|
-|      Lincoln|          Sedan|     11148|    0.37 %|
-|        Mazda|          Sedan|     11046|    0.37 %|
-|       Toyota|        Minivan|      9924|    0.33 %|
-|        Acura|          Sedan|      9830|    0.33 %|
-|          Kia|          Wagon|      9236|    0.31 %|
-|    Chevrolet|            Van|      7774|    0.26 %|
-|     INFINITI|          Sedan|      7647|    0.25 %|
-|        Buick|          Sedan|      6921|    0.23 %|
-|      Porsche|SUV / Crossover|      6649|    0.22 %|
-|          RAM|            Van|      6527|    0.22 %|
-|      Hyundai|      Hatchback|      6501|    0.22 %|
-|         Ford|      Hatchback|      6448|    0.21 %|
-|   Volkswagen|      Hatchback|      6442|    0.21 %|
-|        Honda|          Coupe|      6069|    0.20 %|
-|Mercedes-Benz|            Van|      5468|    0.18 %|
-|       Subaru|      Hatchback|      5365|    0.18 %|
-|       Nissan|      Hatchback|      5255|    0.18 %|
-|        Volvo|          Sedan|      5109|    0.17 %|
-|         Ford|    Convertible|      5058|    0.17 %|
-|          Kia|        Minivan|      4916|    0.16 %|
-|Mercedes-Benz|    Convertible|      4790|    0.16 %|
-|    Chevrolet|          Wagon|      4779|    0.16 %|
-|        Dodge|   Pickup Truck|      4756|    0.16 %|
-|       Jaguar|SUV / Crossover|      4493|    0.15 %|
-|          BMW|          Coupe|      4240|    0.14 %|
-|Mercedes-Benz|          Coupe|      4115|    0.14 %|
-|         MINI|      Hatchback|      4003|    0.13 %|
-|        Honda|   Pickup Truck|      3801|    0.13 %|
-|      Genesis|          Sedan|      3740|    0.12 %|
-|    Chevrolet|    Convertible|      3382|    0.11 %|
-|        Mazda|      Hatchback|      3238|    0.11 %|
-|   Mitsubishi|          Sedan|      3137|    0.10 %|
-|      Hyundai|          Coupe|      3012|    0.10 %|
-|       Jaguar|          Sedan|      2955|    0.10 %|
-|         MINI|SUV / Crossover|      2950|    0.10 %|
-|       Nissan|            Van|      2812|    0.09 %|
-|          BMW|    Convertible|      2770|    0.09 %|
-|      Porsche|          Coupe|      2569|    0.09 %|
-|   Mitsubishi|      Hatchback|      2421|    0.08 %|
-|   Alfa Romeo|          Sedan|      2176|    0.07 %|
-|      Porsche|          Sedan|      2144|    0.07 %|
-|        Volvo|          Wagon|      2115|    0.07 %|
-|          BMW|          Wagon|      2048|    0.07 %|
-|     Maserati|          Sedan|      1984|    0.07 %|
-|   Volkswagen|          Wagon|      1952|    0.07 %|
-|          GMC|            Van|      1853|    0.06 %|
-|         Ford|          Wagon|      1760|    0.06 %|
-|   Alfa Romeo|SUV / Crossover|      1722|    0.06 %|
-|         Audi|          Coupe|      1722|    0.06 %|
-|        Tesla|          Sedan|      1704|    0.06 %|
-|         FIAT|      Hatchback|      1610|    0.05 %|
-|      Porsche|    Convertible|      1535|    0.05 %|
-|     INFINITI|          Coupe|      1453|    0.05 %|
-|        Mazda|    Convertible|      1334|    0.04 %|
-|          Kia|      Hatchback|      1258|    0.04 %|
-|      Pontiac|          Sedan|      1218|    0.04 %|
-|         MINI|          Wagon|      1216|    0.04 %|
-|       Nissan|          Coupe|      1195|    0.04 %|
-|         Audi|          Wagon|      1095|    0.04 %|
-|       Toyota|          Coupe|      1084|    0.04 %|
-|        Lexus|          Coupe|      1038|    0.03 %|
+|         Ford|SUV / Crossover|    160701|    6.22 %|
+|    Chevrolet|SUV / Crossover|    158540|    6.14 %|
+|         Ford|   Pickup Truck|    153823|    5.95 %|
+|         Jeep|SUV / Crossover|    138831|    5.37 %|
+|       Nissan|SUV / Crossover|     96307|    3.73 %|
+|          RAM|   Pickup Truck|     89997|    3.48 %|
+|    Chevrolet|   Pickup Truck|     88554|    3.43 %|
+|       Toyota|          Sedan|     84415|    3.27 %|
+|       Nissan|          Sedan|     79022|    3.06 %|
+|        Honda|SUV / Crossover|     76475|    2.96 %|
+|       Toyota|SUV / Crossover|     75069|    2.91 %|
+|        Honda|          Sedan|     71377|    2.76 %|
+|      Hyundai|SUV / Crossover|     63930|    2.47 %|
+|         Ford|          Sedan|     57217|    2.21 %|
+|        Buick|SUV / Crossover|     54196|    2.10 %|
+|          Kia|SUV / Crossover|     51716|    2.00 %|
+|          GMC|SUV / Crossover|     50725|    1.96 %|
+|      Hyundai|          Sedan|     48646|    1.88 %|
+|    Chevrolet|          Sedan|     45684|    1.77 %|
+|       Subaru|SUV / Crossover|     35552|    1.38 %|
+|        Mazda|SUV / Crossover|     34402|    1.33 %|
+|          Kia|          Sedan|     34395|    1.33 %|
+|          GMC|   Pickup Truck|     32549|    1.26 %|
+|   Volkswagen|          Sedan|     28939|    1.12 %|
+|     Cadillac|SUV / Crossover|     28930|    1.12 %|
+|   Volkswagen|SUV / Crossover|     27771|    1.07 %|
+|        Dodge|SUV / Crossover|     27010|    1.05 %|
+|          BMW|SUV / Crossover|     23477|    0.91 %|
+|Mercedes-Benz|SUV / Crossover|     22738|    0.88 %|
+|       Toyota|   Pickup Truck|     20657|    0.80 %|
+|      Lincoln|SUV / Crossover|     20096|    0.78 %|
+|         Ford|            Van|     19869|    0.77 %|
+|Mercedes-Benz|          Sedan|     19825|    0.77 %|
+|          BMW|          Sedan|     19791|    0.77 %|
+|        Dodge|        Minivan|     18403|    0.71 %|
+|        Lexus|SUV / Crossover|     18154|    0.70 %|
+|        Acura|SUV / Crossover|     18096|    0.70 %|
+|     Chrysler|        Minivan|     17941|    0.69 %|
+|     INFINITI|SUV / Crossover|     17219|    0.67 %|
+|        Dodge|          Sedan|     16777|    0.65 %|
+|         Audi|SUV / Crossover|     15389|    0.60 %|
+|        Honda|        Minivan|     15347|    0.59 %|
+|   Mitsubishi|SUV / Crossover|     13695|    0.53 %|
+|         Audi|          Sedan|     13255|    0.51 %|
+|   Land Rover|SUV / Crossover|     13218|    0.51 %|
+|        Volvo|SUV / Crossover|     13190|    0.51 %|
+|       Nissan|   Pickup Truck|     13049|    0.51 %|
+|    Chevrolet|      Hatchback|     12433|    0.48 %|
+|        Honda|      Hatchback|     12263|    0.47 %|
+|         Jeep|   Pickup Truck|     11629|    0.45 %|
+|       Toyota|      Hatchback|     11571|    0.45 %|
+|        Dodge|          Coupe|     11518|    0.45 %|
+|         Ford|          Coupe|     11243|    0.44 %|
+|        Lexus|          Sedan|     11153|    0.43 %|
+|     Cadillac|          Sedan|     10536|    0.41 %|
+|       Subaru|          Sedan|     10093|    0.39 %|
+|     Chrysler|          Sedan|      9738|    0.38 %|
+|      Lincoln|          Sedan|      9083|    0.35 %|
+|       Subaru|          Wagon|      8861|    0.34 %|
+|        Mazda|          Sedan|      8581|    0.33 %|
+|        Acura|          Sedan|      7591|    0.29 %|
+|          Kia|          Wagon|      7283|    0.28 %|
+|       Toyota|        Minivan|      6788|    0.26 %|
+|    Chevrolet|          Coupe|      6690|    0.26 %|
+|          RAM|            Van|      6339|    0.25 %|
+|      Porsche|SUV / Crossover|      6051|    0.23 %|
+|    Chevrolet|            Van|      5916|    0.23 %|
+|     INFINITI|          Sedan|      5832|    0.23 %|
+|      Hyundai|      Hatchback|      5707|    0.22 %|
+|Mercedes-Benz|            Van|      5233|    0.20 %|
+|   Volkswagen|      Hatchback|      4621|    0.18 %|
+|       Subaru|      Hatchback|      4610|    0.18 %|
+|       Jaguar|SUV / Crossover|      4493|    0.17 %|
+|          Kia|        Minivan|      4423|    0.17 %|
+|         Ford|      Hatchback|      4384|    0.17 %|
+|       Nissan|      Hatchback|      4269|    0.17 %|
+|    Chevrolet|          Wagon|      4094|    0.16 %|
+|        Volvo|          Sedan|      4059|    0.16 %|
+|      Genesis|          Sedan|      3740|    0.14 %|
+|        Honda|          Coupe|      3713|    0.14 %|
+|         Ford|    Convertible|      3703|    0.14 %|
+|Mercedes-Benz|          Coupe|      3472|    0.13 %|
+|        Honda|   Pickup Truck|      3305|    0.13 %|
+|Mercedes-Benz|    Convertible|      3284|    0.13 %|
+|        Buick|          Sedan|      3189|    0.12 %|
+|          BMW|          Coupe|      3053|    0.12 %|
+|         MINI|      Hatchback|      2899|    0.11 %|
+|       Nissan|            Van|      2648|    0.10 %|
+|   Mitsubishi|          Sedan|      2573|    0.10 %|
+|        Mazda|      Hatchback|      2352|    0.09 %|
+|       Jaguar|          Sedan|      2342|    0.09 %|
+|         MINI|SUV / Crossover|      2331|    0.09 %|
+|   Mitsubishi|      Hatchback|      2314|    0.09 %|
+|   Alfa Romeo|          Sedan|      2169|    0.08 %|
+|      Hyundai|          Coupe|      1968|    0.08 %|
+|    Chevrolet|    Convertible|      1925|    0.07 %|
+|      Porsche|          Sedan|      1855|    0.07 %|
+|     Maserati|          Sedan|      1795|    0.07 %|
+|   Alfa Romeo|SUV / Crossover|      1722|    0.07 %|
+|      Porsche|          Coupe|      1702|    0.07 %|
+|        Volvo|          Wagon|      1681|    0.07 %|
+|          BMW|          Wagon|      1674|    0.06 %|
+|          GMC|            Van|      1463|    0.06 %|
+|          BMW|    Convertible|      1443|    0.06 %|
+|        Tesla|          Sedan|      1373|    0.05 %|
+|         Ford|          Wagon|      1252|    0.05 %|
+|   Volkswagen|          Wagon|      1233|    0.05 %|
+|         Audi|          Coupe|      1114|    0.04 %|
+|     INFINITI|          Coupe|      1105|    0.04 %|
+|          Kia|      Hatchback|      1080|    0.04 %|
+|        Lexus|          Coupe|      1021|    0.04 %|
 
+Percentages are in relation to the selected sampling, they represent the percentage of total cars between the years 2015 and 2021.
 The code for this dataframe can be seen in the HistoricalSegmentsByBrand.scala file. A small code snippet can be seen below:
 
 ```scala
@@ -1209,34 +1202,35 @@ Resulting dataframe:
 
 | make_name                |    body_type    | num_models  | percentage  |
 |:-------------------------|:---------------:|:-----------:|:-----------:|
-|   Toyota|          Sedan|     97846|    3.26 %|
-|   Toyota|SUV / Crossover|     86833|    2.89 %|
-|   Toyota|   Pickup Truck|     25634|    0.85 %|
-|   Toyota|      Hatchback|     16199|    0.54 %|
-|   Toyota|        Minivan|      9924|    0.33 %|
-|   Toyota|          Coupe|      1084|    0.04 %|
-|      Kia|SUV / Crossover|     55195|    1.84 %|
-|      Kia|          Sedan|     37736|    1.26 %|
-|      Kia|          Wagon|      9236|    0.31 %|
-|      Kia|        Minivan|      4916|    0.16 %|
-|      Kia|      Hatchback|      1258|    0.04 %|
-|  Hyundai|SUV / Crossover|     67954|    2.26 %|
-|  Hyundai|          Sedan|     56420|    1.88 %|
-|  Hyundai|      Hatchback|      6501|    0.22 %|
-|  Hyundai|          Coupe|      3012|    0.10 %|
-|     Ford|SUV / Crossover|    180961|    6.03 %|
-|     Ford|   Pickup Truck|    176004|    5.87 %|
-|     Ford|          Sedan|     67958|    2.27 %|
-|     Ford|            Van|     22411|    0.75 %|
-|     Ford|          Coupe|     14313|    0.48 %|
-|     Ford|      Hatchback|      6448|    0.21 %|
-|     Ford|    Convertible|      5058|    0.17 %|
-|     Ford|          Wagon|      1760|    0.06 %|
-|Chevrolet|SUV / Crossover|    173184|    5.77 %|
-|Chevrolet|   Pickup Truck|    103631|    3.45 %|
-|Chevrolet|          Sedan|     58465|    1.95 %|
-|Chevrolet|      Hatchback|     13824|    0.46 %|
-|Chevrolet|          Coupe|     11449|    0.38 %|
-|Chevrolet|            Van|      7774|    0.26 %|
-|Chevrolet|          Wagon|      4779|    0.16 %|
-|Chevrolet|    Convertible|      3382|    0.11 %|
+|   Toyota|          Sedan|     84415|    3.27 %|
+|   Toyota|SUV / Crossover|     75069|    2.91 %|
+|   Toyota|   Pickup Truck|     20657|    0.80 %|
+|   Toyota|      Hatchback|     11571|    0.45 %|
+|   Toyota|        Minivan|      6788|    0.26 %|
+|      Kia|SUV / Crossover|     51716|    2.00 %|
+|      Kia|          Sedan|     34395|    1.33 %|
+|      Kia|          Wagon|      7283|    0.28 %|
+|      Kia|        Minivan|      4423|    0.17 %|
+|      Kia|      Hatchback|      1080|    0.04 %|
+|  Hyundai|SUV / Crossover|     63930|    2.47 %|
+|  Hyundai|          Sedan|     48646|    1.88 %|
+|  Hyundai|      Hatchback|      5707|    0.22 %|
+|  Hyundai|          Coupe|      1968|    0.08 %|
+|     Ford|SUV / Crossover|    160701|    6.22 %|
+|     Ford|   Pickup Truck|    153823|    5.95 %|
+|     Ford|          Sedan|     57217|    2.21 %|
+|     Ford|            Van|     19869|    0.77 %|
+|     Ford|          Coupe|     11243|    0.44 %|
+|     Ford|      Hatchback|      4384|    0.17 %|
+|     Ford|    Convertible|      3703|    0.14 %|
+|     Ford|          Wagon|      1252|    0.05 %|
+|Chevrolet|SUV / Crossover|    158540|    6.14 %|
+|Chevrolet|   Pickup Truck|     88554|    3.43 %|
+|Chevrolet|          Sedan|     45684|    1.77 %|
+|Chevrolet|      Hatchback|     12433|    0.48 %|
+|Chevrolet|          Coupe|      6690|    0.26 %|
+|Chevrolet|            Van|      5916|    0.23 %|
+|Chevrolet|          Wagon|      4094|    0.16 %|
+|Chevrolet|    Convertible|      1925|    0.07 %|
+
+Percentages are in relation to the selected sampling, they represent the percentage of total cars between the years 2015 and 2021.

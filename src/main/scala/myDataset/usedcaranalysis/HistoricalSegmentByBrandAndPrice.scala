@@ -16,6 +16,9 @@ object HistoricalSegmentByBrandAndPrice extends App{
     .schema(CarSchema.schema)
     .option("header", "true")
     .load("src/main/resources/data/newCleanDataset.csv")
+    .filter(col("year").isNotNull)
+    .filter(col("year") >= 2015)
+    .filter(col("year") <= 2021)
 
   val totalRows = data.count()
 
@@ -49,28 +52,7 @@ object HistoricalSegmentByBrandAndPrice extends App{
     .withColumn("percentage", percentageFormat(col("num_models") / totalRows))
     .filter(col("num_models") > 1000)
     .orderBy(col("num_models").desc)
-    //.show()
-
-  /*
-
-  val sc = spark.sparkContext
-
-  // Write a csv in columnar form to a single file
-  //val rows = withRank.collect().map(_.toSeq.map(_.toString))
-  val rows = segmentedDataByMakeNameAndPrice.collect().map(_.toSeq.map {
-    case d: Double => d.toString.replace(".", ",")
-    case null => ""
-    case other => other.toString
-  })
-  val csvData = rows.map(_.mkString(";")).mkString("\n")
-
-  sc
-    .parallelize(Seq(csvData), 1)
-    .coalesce(1)
-    .saveAsTextFile("src/main/resources/data/segmentedDataByMakeNameAndPrice.csv")
-*/
 
   segmentedDataByMakeNameAndPrice.show(100)
-
 
 }
