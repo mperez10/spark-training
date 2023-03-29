@@ -25,14 +25,14 @@ object DatasetAnalysis extends App{
   val totalDataset = Seq(("Full Dataset", totalRowsDataset, 100.00)).toDF("type_of_data", "total_rows", "percentage_of_dataset")
 
   val cleanInformation = yearCounts
-    .filter(col("count") > 55000 and col("year") =!= "N/A")
+    .filter(col("year") >= 2012 and col("year") <= 2024 )
     .agg(sum("count").alias("total_rows"))
     .withColumn("type_of_data", lit("Useful"))
     .withColumn("percentage_of_dataset", round(col("total_rows") / totalRowsDataset * 100, 2))
     .select(col("type_of_data"), col("total_rows"), col("percentage_of_dataset"))
 
   val yearOutliers = yearCounts
-    .filter(col("count") <= 55000)
+    .filter(col("year") < 2012 or col("year") > 2024 )
     .agg(sum("count").alias("total_rows"))
     .withColumn("type_of_data", lit("Outlier"))
     .withColumn("percentage_of_dataset", round(col("total_rows") / totalRowsDataset * 100, 2))

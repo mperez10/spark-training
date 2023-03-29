@@ -233,7 +233,7 @@ The schema definition can be found in CarSchema.scala. Below is the code fragmen
 ## Outliers
 
 For the calculation of outliers, it was first decided to apply the interquartile range technique, which basically consists of the calculation of two limits, lower and upper, which serve as a filter to obtain the outliers of the dataset. It should be clarified that this technique does not detect all the outliers, but for a first approximation it is quite useful. After obtaining these values (InterquartileRangeYear.scala), which returned the filters of Min: 2012.5 Max: 2024.5, we agreed with the business to take those years that cover as a floor 80% of the records of the dataset. And for this we considered the years between 2015 and 2021.
-Code about the interquartile range technique available in INterquartileRangeYear.scala or below:
+Code about the interquartile range technique available in InterquartileRangeYear.scala or below:
 
 ```scala
     val numericYearsDF = df.withColumn("numeric_year", col("year") - 1914)
@@ -248,7 +248,7 @@ Code about the interquartile range technique available in INterquartileRangeYear
 
 ## How the Dataset is processed
 
-There is 4 main files on the project inside the usedcaranalysis package.
+There are five main files on the project inside the usedcaranalysis package.
 
 ### CarAnalysisPerYear.scala
 
@@ -368,35 +368,35 @@ Outlier: It is the information that is part of the outliers.
 | type_of_data                    | total_rows | percentage_of_dataset |
 |-------------------------|---------:|-----------:|
 |Full Dataset|   3000210|                100.0|
-|      Useful|   2728222|                90.93|
-|     Outlier|    271988|                 9.07|
+|      Useful|   2780768|                92.69|
+|     Outlier|    218731|                 7.29|
 |         N/A|       711|                 0.02|
 
 The code of this summary can be seen in the file DatasetAnalysis.scala. A small fragment is shared below:
 
 ```scala
-  val cleanInformation = yearCounts
-    .filter(col("count") > 55000 and col("year") =!= "N/A")
-    .agg(sum("count").alias("total_rows"))
-    .withColumn("type_of_data", lit("Useful"))
-    .withColumn("percentage_of_dataset", round(col("total_rows") / totalRowsDataset * 100, 2))
-    .select(col("type_of_data"), col("total_rows"), col("percentage_of_dataset"))
+    val cleanInformation = yearCounts
+      .filter(col("year") >= 2012 and col("year") <= 2024 )
+      .agg(sum("count").alias("total_rows"))
+      .withColumn("type_of_data", lit("Useful"))
+      .withColumn("percentage_of_dataset", round(col("total_rows") / totalRowsDataset * 100, 2))
+      .select(col("type_of_data"), col("total_rows"), col("percentage_of_dataset"))
+    
+    val yearOutliers = yearCounts
+      .filter(col("year") < 2012 or col("year") > 2024 )
+      .agg(sum("count").alias("total_rows"))
+      .withColumn("type_of_data", lit("Outlier"))
+      .withColumn("percentage_of_dataset", round(col("total_rows") / totalRowsDataset * 100, 2))
+      .select(col("type_of_data"), col("total_rows"), col("percentage_of_dataset"))
+    
+    val yearNulls = yearCounts
+      .filter(col("year") === "N/A")
+      .agg(sum("count").alias("total_rows"))
+      .withColumn("type_of_data", lit("N/A"))
+      .withColumn("percentage_of_dataset", round(col("total_rows") / totalRowsDataset * 100, 2))
+      .select(col("type_of_data"), col("total_rows"), col("percentage_of_dataset"))
 
-  val yearOutliers = yearCounts
-    .filter(col("count") <= 55000)
-    .agg(sum("count").alias("total_rows"))
-    .withColumn("type_of_data", lit("Outlier"))
-    .withColumn("percentage_of_dataset", round(col("total_rows") / totalRowsDataset * 100, 2))
-    .select(col("type_of_data"), col("total_rows"), col("percentage_of_dataset"))
-
-  val yearNulls = yearCounts
-    .filter(col("year") === "N/A")
-    .agg(sum("count").alias("total_rows"))
-    .withColumn("type_of_data", lit("N/A"))
-    .withColumn("percentage_of_dataset", round(col("total_rows") / totalRowsDataset * 100, 2))
-    .select(col("type_of_data"), col("total_rows"), col("percentage_of_dataset"))
-
-  totalDataset.union(cleanInformation).union(yearOutliers).union(yearNulls).show()
+    totalDataset.union(cleanInformation).union(yearOutliers).union(yearNulls).show()
 
 ```
 
