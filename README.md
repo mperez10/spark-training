@@ -939,39 +939,39 @@ A small snippet of code is shared below:
 
 Below you can see the resulting dataframe:
 
-|year|    price_segment|avg_price|num_models|          percentaje |
-|-------------------------|---------:|-----------:|-----------:|--------------------:|
-|         Ford|       Medium| 29626.89|    210023|    7.00 %|
-|    Chevrolet|       Medium| 28782.01|    171479|    5.72 %|
-|         Ford|         High| 52296.35|    144515|    4.82 %|
-|        Honda|       Medium| 28034.64|    131100|    4.37 %|
-|       Toyota|       Medium| 28542.87|    129463|    4.32 %|
-|    Chevrolet|          Low|  14028.7|    126343|    4.21 %|
-|         Ford|          Low| 13601.16|    121691|    4.06 %|
-|       Nissan|       Medium| 26489.75|    106237|    3.54 %|
-|       Nissan|          Low| 14491.47|    102658|    3.42 %|
-|         Jeep|       Medium| 29230.54|     94861|    3.16 %|
-|       Toyota|          Low| 13568.29|     80076|    2.67 %|
-|    Chevrolet|         High| 51962.22|     79015|    2.63 %|
-|      Hyundai|       Medium|  26666.9|     71925|    2.40 %|
-|        Honda|          Low|  13609.9|     67366|    2.25 %|
-|      Hyundai|          Low| 14152.88|     60207|    2.01 %|
-|          Kia|          Low| 14710.95|     59927|    2.00 %|
-|          RAM|         High| 53491.14|     57751|    1.92 %|
-|          Kia|       Medium| 26154.26|     49878|    1.66 %|
-|       Subaru|       Medium| 29016.58|     46718|    1.56 %|
-|        Dodge|       Medium| 28079.16|     45563|    1.52 %|
-|          GMC|       Medium| 30064.61|     44588|    1.49 %|
-|          RAM|       Medium| 32105.57|     40170|    1.34 %|
-|        Buick|       Medium| 27878.65|     39148|    1.30 %|
-|        Dodge|          Low| 13613.42|     37866|    1.26 %|
-|        Mazda|       Medium| 28269.45|     37586|    1.25 %|
-|         Jeep|         High|  48286.8|     37169|    1.24 %|
-|          GMC|         High| 56298.76|     36923|    1.23 %|
-|         Jeep|          Low| 14698.47|     36382|    1.21 %|
-|   Volkswagen|       Medium| 27685.37|     35851|    1.19 %|
-|Mercedes-Benz|         High| 67405.17|     34936|    1.16 %|
-|   Volkswagen|          Low|  13358.8|     32935|    1.10 %|
+| make_name     |    price_segment|avg_price|num_models|          percentaje |
+|---------------|---------:|-----------:|-----------:|--------------------:|
+| Ford          |       Medium| 29626.89|    210023|    7.00 %|
+| Chevrolet     |       Medium| 28782.01|    171479|    5.72 %|
+| Ford          |         High| 52296.35|    144515|    4.82 %|
+| Honda         |       Medium| 28034.64|    131100|    4.37 %|
+| Toyota        |       Medium| 28542.87|    129463|    4.32 %|
+| Chevrolet     |          Low|  14028.7|    126343|    4.21 %|
+| Ford          |          Low| 13601.16|    121691|    4.06 %|
+| Nissan        |       Medium| 26489.75|    106237|    3.54 %|
+| Nissan        |          Low| 14491.47|    102658|    3.42 %|
+| Jeep          |       Medium| 29230.54|     94861|    3.16 %|
+| Toyota        |          Low| 13568.29|     80076|    2.67 %|
+| Chevrolet     |         High| 51962.22|     79015|    2.63 %|
+| Hyundai       |       Medium|  26666.9|     71925|    2.40 %|
+| Honda         |          Low|  13609.9|     67366|    2.25 %|
+| Hyundai       |          Low| 14152.88|     60207|    2.01 %|
+| Kia           |          Low| 14710.95|     59927|    2.00 %|
+| RAM           |         High| 53491.14|     57751|    1.92 %|
+| Kia           |       Medium| 26154.26|     49878|    1.66 %|
+| Subaru        |       Medium| 29016.58|     46718|    1.56 %|
+| Dodge         |       Medium| 28079.16|     45563|    1.52 %|
+| GMC           |       Medium| 30064.61|     44588|    1.49 %|
+| RAM           |       Medium| 32105.57|     40170|    1.34 %|
+| Buick         |       Medium| 27878.65|     39148|    1.30 %|
+| Dodge         |          Low| 13613.42|     37866|    1.26 %|
+| Mazda         |       Medium| 28269.45|     37586|    1.25 %|
+| Jeep          |         High|  48286.8|     37169|    1.24 %|
+| GMC           |         High| 56298.76|     36923|    1.23 %|
+| Jeep          |          Low| 14698.47|     36382|    1.21 %|
+| Volkswagen    |       Medium| 27685.37|     35851|    1.19 %|
+| Mercedes-Benz |         High| 67405.17|     34936|    1.16 %|
+| Volkswagen    |          Low|  13358.8|     32935|    1.10 %|
 
 ![](./src/main/resources/images/historical.png)
 
