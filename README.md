@@ -939,7 +939,7 @@ A small snippet of code is shared below:
 
 Below you can see the resulting dataframe:
 
-|year|    make_name|total_cars|total_per_year|          percentaje |
+|year|    price_segment|avg_price|num_models|          percentaje |
 |-------------------------|---------:|-----------:|-----------:|--------------------:|
 |         Ford|       Medium| 29626.89|    210023|    7.00 %|
 |    Chevrolet|       Medium| 28782.01|    171479|    5.72 %|
