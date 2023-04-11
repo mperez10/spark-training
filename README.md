@@ -359,7 +359,7 @@ The code of this summary can be seen in the file CarAnalysisPerYear.scala. A sma
 
 Full Dataset: It is the complete dataset.
 
-Usefull: It is the information leaked between 2015 and 2021.
+Usefull: It is the information leaked between 2012 and 2024 (lower and upper limits of outliers.).
 
 N/A: Information with unreadable values (wrong formats, missing fields).
 
@@ -405,7 +405,7 @@ The code of this summary can be seen in the file DatasetAnalysis.scala. A small 
 In order to be able to answer and give visibility of this question, what was done was to put together a query that has the total cars by year (regardless of brand),
 and then calculate the total cars by brand.
 Having these two pieces of information, we can now get the percentage of dominance of a brand in the market according to year.
-The query can be seen in the PercentageOfCarBrandsPerYear.scala file. A small fragment is shared below:
+The query can be seen in the PercentageOfCarBrandsByYear.scala file. A small fragment is shared below:
 
 ```scala
   // Group by year and manufacturer's name and count the number of cars.
